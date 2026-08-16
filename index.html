@@ -9,8 +9,8 @@
 
   <style>
     :root {
-      var(--bg-gradient-start): #0f172a;
-      var(--bg-gradient-end): #1e3a8a;
+      --bg-gradient-start: #0f172a;
+      --bg-gradient-end: #1e3a8a;
       --accent-color: #2563eb;
       --accent-light: #dbeafe;
       --text-dark: #1e293b;
@@ -21,7 +21,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
 
     body {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -33,14 +33,12 @@
     /* Contenedor Principal */
     .cv-container {
       display: flex;
-      max-width: 1100px;
+      max-width: 1150px; /* Un poco más ancho para acomodar la nueva estructura */
       width: 100%;
-      position: relative;
-      align-items: flex-start;
       gap: 20px;
     }
 
-    /* Menú Lateral */
+    /* Menú Lateral (Se mantiene igual) */
     .side-nav {
       background: var(--white);
       border-radius: 12px;
@@ -50,6 +48,7 @@
       padding: 1.5rem 0;
       width: 80px;
       z-index: 10;
+      flex-shrink: 0;
     }
     .nav-item {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -59,18 +58,26 @@
     .nav-item i { font-size: 1.2rem; margin-bottom: 0.3rem; }
     .nav-item.active, .nav-item:hover { color: var(--accent-color); }
 
-    /* Tarjeta de Perfil */
-    .profile-card {
+    /* =========================================
+       NUEVA ESTRUCTURA UNIFICADA (TARJETA ÚNICA)
+       ========================================= */
+    .unified-card {
+      display: flex;
       background: var(--white);
       border-radius: 12px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      width: 340px;
-      position: relative;
-      z-index: 20;
-      overflow: hidden;
+      flex-grow: 1;
+      overflow: hidden; /* Esto asegura que la foto respete las esquinas redondeadas */
+    }
+
+    /* Columna Izquierda: Perfil */
+    .profile-sidebar {
+      width: 320px;
+      border-right: 1px solid #e2e8f0;
       display: flex;
       flex-direction: column;
       flex-shrink: 0;
+      background: var(--white); /* Fondo unificado */
     }
 
     .profile-header {
@@ -80,17 +87,22 @@
       background-size: cover;
       background-position: center;
       clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+      flex-shrink: 0;
     }
 
-    .profile-info { padding: 1.5rem; text-align: center; flex-grow: 1; }
+    .profile-info { padding: 1.5rem; text-align: center; }
     .profile-info h1 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 0.2rem; }
     .profile-info h2 { font-size: 0.95rem; color: var(--accent-color); font-weight: 500; margin-bottom: 1.5rem; }
     
-    .social-links { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 2rem; }
+    .social-links { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 1rem; }
     .social-links a { color: var(--text-gray); font-size: 1.2rem; transition: color 0.3s; }
     .social-links a:hover { color: var(--accent-color); }
 
-    .profile-buttons { display: flex; border-top: 1px solid #e2e8f0; }
+    .profile-buttons { 
+      display: flex; 
+      border-top: 1px solid #e2e8f0;
+      margin-top: auto; /* EMPUJA LOS BOTONES HASTA ABAJO DE LA COLUMNA */
+    }
     .profile-buttons a {
       flex: 1; padding: 1.2rem 0; text-align: center; text-decoration: none;
       color: var(--text-dark); font-weight: 600; font-size: 0.85rem; transition: background 0.3s;
@@ -99,17 +111,13 @@
     .profile-buttons a:hover { background: var(--accent-light); color: var(--accent-color); }
     .profile-buttons a:first-child { border-right: 1px solid #e2e8f0; }
 
-    /* Contenido Principal */
-    .main-content {
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    /* Columna Derecha: Contenido Principal */
+    .content-area {
       flex-grow: 1;
-      padding: 3rem 3rem 3rem 4rem;
-      margin-left: -30px;
-      z-index: 5;
-      min-height: 550px;
-      overflow: hidden; /* Evita que el carrusel se salga del cuadro */
+      padding: 3rem 4rem; /* Padding amplio para respirar */
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* Evita desbordes del carrusel */
     }
 
     .section-title {
@@ -128,45 +136,24 @@
     .info-label { background: var(--accent-color); color: white; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; font-size: 0.8rem;}
     .info-value { color: var(--text-dark); font-weight: 500; }
 
-    /* =========================================
-       NUEVO CSS DEL CARRUSEL DE SERVICIOS
-       ========================================= */
+    /* CARRUSEL DE SERVICIOS */
     .carousel-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      margin: 0 -10px; /* Para dar espacio a los botones */
+      position: relative; display: flex; align-items: center; margin: 0 -10px;
     }
 
     .services-track {
-      display: flex;
-      gap: 1.5rem;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-      padding: 1rem 10px 1.5rem 10px; /* Padding extra para que no se corten las sombras */
-      
-      /* Ocultar barra de scroll nativa */
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+      display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth;
+      scroll-snap-type: x mandatory; padding: 1rem 10px 1.5rem 10px;
+      -ms-overflow-style: none; scrollbar-width: none;
     }
     .services-track::-webkit-scrollbar { display: none; }
 
     .service-card {
-      background: var(--white);
-      text-align: center;
-      padding: 1.5rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      flex: 0 0 calc(50% - 0.75rem); /* Muestra 2 tarjetas a la vez en PC */
-      scroll-snap-align: start; /* Aquí se "ancla" al hacer scroll */
+      background: var(--white); text-align: center; padding: 1.5rem;
+      border: 1px solid #e2e8f0; border-radius: 8px; transition: transform 0.3s, box-shadow 0.3s;
+      flex: 0 0 calc(50% - 0.75rem); scroll-snap-align: start;
     }
-    .service-card:hover { 
-      transform: translateY(-5px); 
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
-      border-color: var(--accent-light); 
-    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--accent-light); }
     .service-icon { 
       background: var(--accent-color); color: white; width: 50px; height: 50px; 
       border-radius: 50%; display: flex; align-items: center; justify-content: center; 
@@ -175,21 +162,11 @@
     .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
     .service-card p { font-size: 0.85rem; color: var(--text-gray); }
 
-    /* Botones Flotantes del Carrusel */
     .carousel-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: var(--white);
-      color: var(--accent-color);
-      border: 1px solid #e2e8f0;
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      z-index: 10;
-      transition: all 0.3s;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: var(--white); color: var(--accent-color); border: 1px solid #e2e8f0;
+      width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; transition: all 0.3s;
     }
     .carousel-btn:hover { background: var(--accent-color); color: var(--white); border-color: var(--accent-color); }
     .btn-prev { left: -20px; }
@@ -198,15 +175,18 @@
     /* Diseño Responsivo (Celulares) */
     @media (max-width: 992px) {
       body { padding: 1rem; }
-      .cv-container { flex-direction: column; align-items: center; }
-      .side-nav { flex-direction: row; width: 100%; justify-content: space-around; padding: 0.5rem 0; margin-bottom: 1rem; }
-      .main-content { margin-left: 0; margin-top: -30px; padding: 4rem 1.5rem 1.5rem 1.5rem; width: 100%; max-width: 340px; }
+      .cv-container { flex-direction: column; align-items: center; gap: 10px; }
+      .side-nav { flex-direction: row; width: 100%; justify-content: space-around; padding: 0.5rem 0; }
+      
+      .unified-card { flex-direction: column; width: 100%; max-width: 500px; }
+      .profile-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; }
+      .content-area { padding: 2rem 1.5rem; }
+      
       .about-grid { grid-template-columns: 1fr; }
       .personal-info { border-left: none; padding-left: 0; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
       
-      /* En móviles, mostrar solo 1 tarjeta a la vez */
       .service-card { flex: 0 0 100%; }
-      .carousel-btn { display: none; } /* En móvil se usa el dedo para deslizar */
+      .carousel-btn { display: none; }
     }
   </style>
 </head>
@@ -222,107 +202,102 @@
       <a href="#" class="nav-item"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
     </nav>
 
-    <!-- Tarjeta de Perfil -->
-    <div class="profile-card">
-      <div class="profile-header"></div>
+    <!-- TARJETA UNIFICADA (Contiene Perfil y Contenido) -->
+    <div class="unified-card">
       
-      <div class="profile-info">
-        <h1>Rolando Borrego</h1>
-        <h2>Ingeniero Electrónico | Docente</h2>
+      <!-- Columna Izquierda (Perfil) -->
+      <aside class="profile-sidebar">
+        <div class="profile-header"></div>
         
-        <div class="social-links">
-          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#"><i class="fa-brands fa-github"></i></a>
-          <a href="#"><i class="fa-solid fa-envelope"></i></a>
-        </div>
-      </div>
-
-      <div class="profile-buttons">
-        <a href="#">DESCARGAR CV <i class="fa-solid fa-download"></i></a>
-        <a href="#">CONTÁCTAME <i class="fa-solid fa-paper-plane"></i></a>
-      </div>
-    </div>
-
-    <!-- Contenido Principal -->
-    <div class="main-content">
-      
-      <!-- Sección Acerca de -->
-      <h2 class="section-title">Acerca</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p><strong>¡Hola! Soy Rolando E. Borrego Navarro.</strong><br>Ingeniero de Servicio en Meditech y Docente Universitario en FIME UAdeC.</p>
-          <p>Cuento con amplia experiencia internacional en equipos médicos de alta especialidad, así como en la enseñanza y desarrollo de proyectos de automatización, programación en Python y robótica.</p>
-        </div>
-        
-        <div class="personal-info">
-          <div class="info-row"><span class="info-label">Edad:</span><span class="info-value">29</span></div>
-          <div class="info-row"><span class="info-label">Residencia:</span><span class="info-value">México</span></div>
-          <div class="info-row"><span class="info-label">Freelance:</span><span class="info-value">Disponible</span></div>
-          <div class="info-row"><span class="info-label">Dirección:</span><span class="info-value">Monclova, Coahuila</span></div>
-        </div>
-      </div>
-
-      <!-- Sección Servicios (CARRUSEL) -->
-      <h2 class="section-title">Mis Áreas de Especialidad</h2>
-      
-      <div class="carousel-wrapper">
-        <!-- Botón Izquierdo -->
-        <button class="carousel-btn btn-prev" onclick="scrollCarousel(-1)">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-
-        <!-- Pista de Tarjetas -->
-        <div class="services-track" id="servicesTrack">
+        <div class="profile-info">
+          <h1>Rolando Borrego</h1>
+          <h2>Ingeniero Electrónico | Docente</h2>
           
-          <!-- Tarjeta 1 -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
-            <h3>Automatización</h3>
-            <p>Desarrollo y control de hardware con Arduino y ESP32. Creación de interfaces en Python (Tkinter/CustomTkinter).</p>
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
           </div>
-
-          <!-- Tarjeta 2 -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-            <h3>Ingeniería Médica</h3>
-            <p>Servicio e instalación de equipos de imagenología y alta especialidad a nivel internacional en Meditech.</p>
-          </div>
-
-          <!-- Tarjeta 3 -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
-            <h3>Robótica e Innovación</h3>
-            <p>Fundación y dirección de CURI. Coordinación de proyectos tecnológicos colaborativos y concursos estudiantiles.</p>
-          </div>
-
-          <!-- Tarjeta 4 -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
-            <h3>Docencia Universitaria</h3>
-            <p>Diseño de temarios, prácticas de laboratorio y gestión académica para ingeniería en la FIME UAdeC.</p>
-          </div>
-
-          <!-- Tarjeta 5 -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-cube"></i></div>
-            <h3>Diseño & Biónica</h3>
-            <p>Diseño paramétrico y mecánico utilizando herramientas como Fusion 360, con enfoque en visión artificial y biónica.</p>
-          </div>
-
-          <!-- Tarjeta 6 -->
-          <div class="service-card">
-            <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
-            <h3>Gestión de TI</h3>
-            <p>Administración de servidores, plataformas de bases de datos y arquitectura tecnológica avanzada.</p>
-          </div>
-
         </div>
 
-        <!-- Botón Derecho -->
-        <button class="carousel-btn btn-next" onclick="scrollCarousel(1)">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
+        <div class="profile-buttons">
+          <a href="#">DESCARGAR CV <i class="fa-solid fa-download"></i></a>
+          <a href="#">CONTÁCTAME <i class="fa-solid fa-paper-plane"></i></a>
+        </div>
+      </aside>
+
+      <!-- Columna Derecha (Contenido) -->
+      <main class="content-area">
+        
+        <!-- Sección Acerca de -->
+        <h2 class="section-title">Acerca</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p><strong>¡Hola! Soy Rolando E. Borrego Navarro.</strong><br>Ingeniero de Servicio en Meditech y Docente Universitario en FIME UAdeC.</p>
+            <p>Cuento con amplia experiencia internacional en equipos médicos de alta especialidad, así como en la enseñanza y desarrollo de proyectos de automatización, programación en Python y robótica.</p>
+          </div>
+          
+          <div class="personal-info">
+            <div class="info-row"><span class="info-label">Edad:</span><span class="info-value">29</span></div>
+            <div class="info-row"><span class="info-label">Residencia:</span><span class="info-value">México</span></div>
+            <div class="info-row"><span class="info-label">Freelance:</span><span class="info-value">Disponible</span></div>
+            <div class="info-row"><span class="info-label">Dirección:</span><span class="info-value">Monclova, Coahuila</span></div>
+          </div>
+        </div>
+
+        <!-- Sección Servicios (CARRUSEL) -->
+        <h2 class="section-title">Mis Áreas de Especialidad</h2>
+        
+        <div class="carousel-wrapper">
+          <button class="carousel-btn btn-prev" onclick="scrollCarousel(-1)">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+
+          <div class="services-track" id="servicesTrack">
+            <!-- Tarjeta 1 -->
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3>Automatización</h3>
+              <p>Desarrollo y control de hardware con Arduino y ESP32. Creación de interfaces en Python (Tkinter/CustomTkinter).</p>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+              <h3>Ingeniería Médica</h3>
+              <p>Servicio e instalación de equipos de imagenología y alta especialidad a nivel internacional en Meditech.</p>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+              <h3>Robótica e Innovación</h3>
+              <p>Fundación y dirección de CURI. Coordinación de proyectos tecnológicos colaborativos y concursos estudiantiles.</p>
+            </div>
+            <!-- Tarjeta 4 -->
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+              <h3>Docencia Universitaria</h3>
+              <p>Diseño de temarios, prácticas de laboratorio y gestión académica para ingeniería en la FIME UAdeC.</p>
+            </div>
+            <!-- Tarjeta 5 -->
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-cube"></i></div>
+              <h3>Diseño & Biónica</h3>
+              <p>Diseño paramétrico y mecánico utilizando herramientas como Fusion 360, con enfoque en visión artificial y biónica.</p>
+            </div>
+            <!-- Tarjeta 6 -->
+            <div class="service-card">
+              <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+              <h3>Gestión de TI</h3>
+              <p>Administración de servidores, bases de datos y arquitectura tecnológica avanzada.</p>
+            </div>
+          </div>
+
+          <button class="carousel-btn btn-next" onclick="scrollCarousel(1)">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+
+      </main>
 
     </div>
   </div>
@@ -331,11 +306,8 @@
   <script>
     function scrollCarousel(direction) {
       const track = document.getElementById('servicesTrack');
-      // Calcula el ancho de una tarjeta + el espacio (gap) entre ellas
       const card = track.querySelector('.service-card');
-      const scrollAmount = card.offsetWidth + 24; // 24px equivale a 1.5rem de gap
-      
-      // Realiza el scroll
+      const scrollAmount = card.offsetWidth + 24; 
       track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
   </script>
