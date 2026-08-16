@@ -106,7 +106,7 @@
       grid-template-columns: repeat(3, auto); 
       justify-content: center; 
       gap: 1.5rem 2rem; 
-      margin-top: 3rem; /* Cambiamos 'auto' por '3rem' para que suba y quede cerca del texto */
+      margin-top: 3rem; 
       margin-bottom: 2rem; 
     }
     .social-links a { 
@@ -144,7 +144,16 @@
 
     /* Layout del "Acerca de mí" */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-    .about-text p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+    
+    /* AQUÍ APLICAMOS EL TEXT-ALIGN: JUSTIFY PARA EL TEXTO */
+    .about-text p { 
+      color: var(--text-gray); 
+      font-size: 0.95rem; 
+      line-height: 1.7; 
+      margin-bottom: 1rem; 
+      text-align: justify; 
+    }
+    
     .personal-info { border-left: 1px solid #e2e8f0; padding-left: 1.5rem; }
     .info-row { display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.9rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;}
     .info-label { background: var(--accent-color); color: white; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; font-size: 0.8rem;}
