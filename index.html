@@ -3,339 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portafolio & Trayectoria Profesional | Ing. Rolando E. Borrego Navarro</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
-  
+  <title>CV Promo | Ing. Rolando E. Borrego Navarro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Palette */
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --card-border: #334155;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-dim: #075985;
-      
-      /* Typography */
-      --font-body: 'Inter', sans-serif;
-      --font-heading: 'Poppins', sans-serif;
+      --bg-color: #f4f4f5;
+      --text-main: #111111;
+      --accent: #000000;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      font-family: var(--font-body);
-      padding: 3rem 1rem;
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      overflow-x: hidden;
+      height: 100vh;
+      display: flex;
+    }
+
+    /* Animaciones de entrada */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Estructura Principal */
+    .left-panel {
+      flex: 1;
+      padding: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
     }
-    
-    /* Subtle background circuit pattern */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10l80 0m0 0l0 80m0 0l-80 0m0 0l0-80' stroke='%23334155' stroke-width='0.5' fill='none' fill-opacity='0.1'/%3E%3Cpath d='M30 10l40 0m-20 0l0 40m0 20l0 20m20-40l20 0m-40 20l0 20' stroke='%23334155' stroke-width='0.5' fill='none' fill-opacity='0.1'/%3E%3Ccircle cx='10' cy='10' r='1.5' fill='%23334155' fill-opacity='0.2'/%3E%3Ccircle cx='90' cy='10' r='1.5' fill='%23334155' fill-opacity='0.2'/%3E%3Ccircle cx='90' cy='90' r='1.5' fill='%23334155' fill-opacity='0.2'/%3E%3Ccircle cx='10' cy='90' r='1.5' fill='%23334155' fill-opacity='0.2'/%3E%3Ccircle cx='50' cy='50' r='1.5' fill='%23334155' fill-opacity='0.2'/%3E%3C/svg%3E");
-      opacity: 0.15;
-      z-index: -1;
-    }
 
-    .container { max-width: 960px; margin: 0 auto; }
-    
-    /* Header & Branding */
-    header { text-align: center; margin-bottom: 4rem; position: relative; }
-    
-    .profile-photo {
-      width: 130px; height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--accent);
-      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
-      margin-bottom: 1.5rem;
-    }
-
-    header h1 {
-      font-family: var(--font-heading);
-      font-size: 2.8rem;
-      background: linear-gradient(135deg, var(--accent) 0%, #10b981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.25rem;
-      letter-spacing: -1px;
-    }
-    
-    header p { color: var(--text-muted); font-size: 1.15rem; font-weight: 300; margin-bottom: 1.5rem; }
-
-    .social-links {
-      display: flex; justify-content: center; gap: 1.25rem; margin-bottom: 1.5rem;
-    }
-    .social-icon { width: 22px; height: 22px; fill: var(--text-muted); transition: fill 0.2s, transform 0.2s; }
-    .social-icon:hover { fill: var(--accent); transform: scale(1.1); }
-
-    .badge-container { display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem; }
-    .badge {
-      background: rgba(56, 189, 248, 0.05);
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-      padding: 0.35rem 0.9rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    /* Sections */
-    section { margin-bottom: 4rem; }
-    h2 {
-      font-family: var(--font-heading);
-      font-size: 1.6rem;
-      padding-bottom: 0.75rem;
-      margin-bottom: 2rem;
-      display: flex; align-items: center; gap: 0.6rem;
-      color: var(--text);
-      border-bottom: 1px solid var(--card-border);
-    }
-    h2 span { font-size: 1.8rem; }
-
-    /* Cards - Shared style */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      margin-bottom: 1rem;
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(56, 189, 248, 0.1);
-    }
-
-    /* Sobre Mí */
-    .about-card {
+    .right-strip {
+      width: 250px;
+      background-color: var(--accent);
+      height: 100vh;
       position: relative;
-      background-image: linear-gradient(135deg, rgba(30, 41, 59, 1) 0%, rgba(30, 41, 59, 0.8) 100%),
-                        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='10' stroke='%23334155' stroke-width='0.5' fill='none' opacity='0.1'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%23334155' stroke-width='0.5' fill='none' opacity='0.05'/%3E%3C/svg%3E");
-      background-size: cover, 150px;
     }
-    .about-card p { font-size: 1.05rem; }
 
-    /* Proyectos */
-    .filter-buttons { display: flex; gap: 0.6rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
-    .filter-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.5rem 1.1rem;
-      border-radius: 10px;
+    /* Navegación lateral (Puntos) */
+    .side-nav {
+      position: absolute;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .nav-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      border: 2px solid var(--accent);
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .nav-dot.active { background-color: var(--accent); }
+
+    /* Redes Sociales laterales */
+    .social-nav {
+      position: absolute;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      color: white;
+      z-index: 10;
+    }
+    .social-nav span {
+      writing-mode: vertical-rl;
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 2px;
+      transition: color 0.3s;
+    }
+    .social-nav span:hover { color: #888; }
+
+    /* Contenido de Texto */
+    .content-box {
+      max-width: 500px;
+      margin-left: 10%;
+      animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+    .greeting { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 0.5rem; }
+    .title { font-size: 5rem; font-weight: 900; line-height: 1.1; margin-bottom: 2rem; }
+
+    /* Botones */
+    .btn-group { display: flex; gap: 1rem; }
+    .btn {
+      padding: 1rem 2rem;
+      font-weight: 700;
       font-size: 0.9rem;
-      transition: all 0.2s ease;
-      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid var(--accent);
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--bg);
-      font-weight: 600;
-    }
+    .btn-dark { background-color: var(--accent); color: white; }
+    .btn-dark:hover { background-color: transparent; color: var(--accent); }
+    .btn-light { background-color: transparent; color: var(--accent); }
+    .btn-light:hover { background-color: var(--accent); color: white; }
 
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
-    .project-card { display: flex; flex-direction: column; height: 100%; position: relative; }
-    .project-card.hidden { display: none; }
-    
-    .project-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
-    .project-icon { width: 45px; height: 45px; flex-shrink: 0; opacity: 0.9; }
-    .project-icon svg { width: 100%; height: 100%; }
-
-    .card h3 { font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 0.15rem; line-height: 1.3; }
-    .card h3 a { text-decoration: none; color: var(--accent); transition: color 0.2s; }
-    .card h3 a:hover { color: #f8fafc; }
-    
-    .card-meta { color: var(--text-muted); font-size: 0.9rem; font-weight: 300; text-transform: uppercase; letter-spacing: 1px; }
-    .project-card p { font-size: 0.95rem; }
-
-    .project-card::after {
-      content: '🔗'; position: absolute; bottom: 1.5rem; right: 1.5rem; font-size: 1rem; opacity: 0.3; transition: opacity 0.2s;
-    }
-    .project-card:hover::after { opacity: 0.8; }
-
-    /* Trayectoria */
-    .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; align-items: center; }
-    .timeline-icon { width: 40px; height: 40px; }
-    .timeline-content { flex: 1; }
-    .card.timeline-card { padding: 1.25rem; margin-bottom: 0; }
-
-    footer {
-      text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--card-border);
+    /* Sección de la Imagen (Superposición) */
+    .image-section {
+      position: absolute;
+      right: -100px; /* Cruza hacia la franja negra */
+      top: 50%;
+      transform: translateY(-50%);
+      width: 450px;
+      height: 550px;
+      animation: fadeIn 1.5s ease forwards;
     }
 
-    /* Mobile adaptations */
-    @media (max-width: 768px) {
-      body { padding: 2rem 0.75rem; }
-      header h1 { font-size: 2.2rem; }
-      .profile-photo { width: 110px; height: 110px; }
-      .timeline-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
-      .timeline-icon { width: 35px; height: 35px; }
+    /* El marco negro detrás de la foto */
+    .image-frame {
+      position: absolute;
+      top: 30px; left: -30px;
+      width: 100%; height: 100%;
+      border: 2px solid var(--accent);
+      z-index: 1;
     }
+
+    /* Patrón de puntos */
+    .dot-pattern {
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 200px; height: 150px;
+      background-image: radial-gradient(#999 2px, transparent 2px);
+      background-size: 15px 15px;
+      z-index: 2;
+    }
+
+    /* La foto en sí */
+    .profile-photo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 3;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    /* Controles de flecha */
+    .slider-controls {
+      position: absolute;
+      bottom: -60px; left: 0;
+      display: flex; gap: 1rem;
+    }
+    .arrow-btn {
+      width: 50px; height: 35px;
+      background: transparent;
+      border: 2px solid var(--accent);
+      cursor: pointer;
+      display: flex; justify-content: center; align-items: center;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .arrow-btn:hover { background: #e0e0e0; }
+
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <!-- REEMPLAZA ESTA IMAGEN CON TU PROPIA FOTO CUANDO ESTÉS LISTO -->
-      <img src="https://via.placeholder.com/130" alt="Ing. Rolando E. Borrego Navarro" class="profile-photo">
+  <!-- Puntos laterales -->
+  <div class="side-nav">
+    <div class="nav-dot active"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+  </div>
+
+  <div class="left-panel">
+    
+    <div class="content-box">
+      <p class="greeting">HOLA,</p>
+      <h1 class="title">SOY<br>ROLANDO</h1>
       
-      <h1>Ing. Rolando E. Borrego Navarro</h1>
-      <p>Ingeniero Electrónico | Docente Universitario | Especialista en Tecnología</p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-dark">DESCARGAR CV</a>
+        <a href="#" class="btn btn-light">CONTACTO</a>
+      </div>
+    </div>
+
+    <!-- Contenedor de la Imagen y capas -->
+    <div class="image-section">
+      <div class="dot-pattern"></div>
+      <div class="image-frame"></div>
+      <!-- CAMBIA ESTE ENLACE POR TU FOTO REAL -->
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop" alt="Ing. Rolando" class="profile-photo" id="mainPhoto">
       
-      <div class="social-links">
-        <a href="https://github.com/rebn08" target="_blank" title="GitHub">
-          <svg class="social-icon" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/" target="_blank" title="LinkedIn">
-          <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a href="mailto:rebn08@example.com" title="Contacto">
-          <svg class="social-icon" viewBox="0 0 24 24"><path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/></svg>
-        </a>
+      <div class="slider-controls">
+        <button class="arrow-btn" onclick="animateClick()">←</button>
+        <button class="arrow-btn" onclick="animateClick()">→</button>
       </div>
+    </div>
 
-      <div class="badge-container">
-        <span class="badge">Sistemas Electrónicos</span>
-        <span class="badge">Automatización & Robótica</span>
-        <span class="badge">Docencia Universitaria</span>
-      </div>
-    </header>
+  </div>
 
-    <!-- Sobre Mí -->
-    <section>
-      <h2><span>👨‍🏫</span> Sobre Mí</h2>
-      <div class="card about-card">
-        <p>Espacio dedicado para compartir trayectoria profesional, académica y proyectos activos en docencia, electrónica y desarrollo tecnológico con alumnos y colegas.</p>
-      </div>
-    </section>
-
-    <!-- Filtro de Proyectos y Áreas -->
-    <section>
-      <h2><span>🚀</span> Proyectos y Líneas de Trabajo</h2>
-      <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
-        <button class="filter-btn" onclick="filterCategory('docencia')">Docencia & Cursos</button>
-        <button class="filter-btn" onclick="filterCategory('electronica')">Electrónica & Hardware</button>
-        <button class="filter-btn" onclick="filterCategory('comunidad')">Comunidad & Talleres</button>
-      </div>
-
-      <div class="projects-grid">
-        <div class="card project-card" data-category="docencia">
-          <div class="project-header">
-            <div class="project-icon">
-              <!-- Icono: Universidad / Escudo -->
-              <svg viewBox="0 0 24 24"><path fill="%2338bdf8" d="M12 2l11 4.5v3h-1.5v6.5l-1.5 1V9.5h-16V17l-1.5-1V9.5H1v-3L12 2zm10 6L12 3.5 2 8l10 4.5L22 8zM3.5 13.5l1.5-1v1.5h14v-1.5l1.5 1V17H3.5v-3.5zm2-6h13v1.5H5.5V7.5zM12 11.25L5.75 8.75 12 6.25l6.25 2.5L12 11.25z"/></svg>
-            </div>
-            <div>
-              <h3><a href="#">Cursos de Ingeniería & Talleres</a></h3>
-              <div class="card-meta">Facultad de Ingeniería</div>
-            </div>
-          </div>
-          <p>Materiales didácticos, guías de laboratorio y temarios prácticos para estudiantes.</p>
-        </div>
-
-        <div class="card project-card" data-category="electronica">
-          <div class="project-header">
-            <div class="project-icon">
-              <!-- Icono: Brazo Robótico / Chip -->
-              <svg viewBox="0 0 24 24"><path fill="%2338bdf8" d="M12 2a10 10 0 110 20 10 10 0 010-20zm1 8.5L9.7 7H5v5l1 1h4l3 1.5V11zm4.5 4a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-2-7a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm4.5-2.5h-1v5l1 1h2v-4.5l-1.5-1.5H18zm-2 2a.5.5 0 11-1 0 .5.5 0 011 0zm0 3.5a.5.5 0 11-1 0 .5.5 0 011 0zM12 14v4a1 1 0 01-1 1H7v-1h4v-3h1z"/></svg>
-            </div>
-            <div>
-              <h3><a href="#">Proyectos de Automatización con Python y Microcontroladores</a></h3>
-              <div class="card-meta">Arduino / ESP32</div>
-            </div>
-          </div>
-          <p>Desarrollo de interfaces gráficas, sensado y control de motores DC y servomecanismos.</p>
-        </div>
-
-        <div class="card project-card" data-category="comunidad">
-          <div class="project-header">
-            <div class="project-icon">
-              <!-- Icono: Grupo / Comunidad -->
-              <svg viewBox="0 0 24 24"><path fill="%2338bdf8" d="M12 5a3.5 3.5 0 100-7 3.5 3.5 0 000 7zm4.5 3.5l-2.5 1a10.5 10.5 0 01-4 0l-2.5-1A13 13 0 000 18.5V23h24v-4.5A13 13 0 0016.5 8.5zm1.5 1h1v10h-1V9.5zm2-1h1a10 10 0 012 2h-1a10 10 0 00-2-2zM4 11h1v8.5l-1 .5H3l1-2V11zm2-.5h.5V18.5H6v-8zm1-1.5h1v10H7v-10zM12 20h.5l-.5 1h-.5v-1zM5 8.5h1a10 10 0 012 2H7a10 10 0 00-2-2zm12 3h.5v6.5l-1 .5h-1l1-2v-5z"/></svg>
-            </div>
-            <div>
-              <h3><a href="#">Robótica e Innovación</a></h3>
-              <div class="card-meta">Comunidades de Talento & Engagement Estudiantil</div>
-            </div>
-          </div>
-          <p>Coordinación de iniciativas estudiantiles, concursos y proyectos tecnológicos colaborativos.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trayectoria Académica -->
-    <section>
-      <h2><span>🎓</span> Formación & Certificaciones</h2>
-      
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <!-- Icono: Universidad / Escudo -->
-          <svg viewBox="0 0 24 24"><path fill="%23334155" d="M12 2l11 4.5v3h-1.5v6.5l-1.5 1V9.5h-16V17l-1.5-1V9.5H1v-3L12 2zm10 6L12 3.5 2 8l10 4.5L22 8zM3.5 13.5l1.5-1v1.5h14v-1.5l1.5 1V17H3.5v-3.5zm2-6h13v1.5H5.5V7.5zM12 11.25L5.75 8.75 12 6.25l6.25 2.5L12 11.25z"/></svg>
-        </div>
-        <div class="timeline-content">
-          <div class="card timeline-card">
-            <h3>Maestría en Gestión de TI / Sistemas Electrónicos</h3>
-            <div class="card-meta">Posgrados & Especialidades</div>
-            <p>Enfoque en arquitectura tecnológica, gestión de sistemas y desarrollo aplicado.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-icon">
-          <!-- Icono: Engranajes / Ingeniería -->
-          <svg viewBox="0 0 24 24"><path fill="%23334155" d="M19.4 13l2.1-1.6c.2-.1.2-.4 0-.6l-2.1-1.6-.5 1.1-.1 1.6.6 1.1zm-1.8-6.9a9.6 9.6 0 00-2.4-1.3l.1-2.5c0-.2-.2-.4-.5-.4H12c-.3 0-.5.2-.5.4l.1 2.5a9.6 9.6 0 00-2.4 1.3l-2-.8c-.3-.1-.5 0-.6.3L5.4 7c-.2.2-.1.5.2.6l2 .8a9.6 9.6 0 00-1.4 2.1l-2.4-.3c-.3 0-.5.2-.5.4v2.5c0 .3.2.5.5.5l2.4.3a9.6 9.6 0 001.4 2.1l-.8 2c-.1.3 0 .5.3.6l1.7.9c.2.2.5.1.6-.2l.8-2a9.6 9.6 0 002.4 1.3l-.1 2.5c0 .2.2.4.5.4h2.5c.3 0 .5-.2.5-.4l-.1-2.5a9.6 9.6 0 002.4-1.3l2 .8c.3.1.5 0 .6-.3l1.1-1.7c.2-.2.1-.5-.2-.6l-2-.8a9.6 9.6 0 001.4-2.1l2.4.3c.3 0 .5-.2.5-.4V12c0-.3-.2-.5-.5-.5l-2.4-.3a9.6 9.6 0 00-1.4-2.1l.8-2c.1-.3 0-.5-.3-.6l-1.7-.9c-.2-.2-.5-.1-.6.2l-.8 2zm-5.6 7.4a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
-        </div>
-        <div class="timeline-content">
-          <div class="card timeline-card">
-            <h3>Ingeniería Electrónica Industrial</h3>
-            <div class="card-meta">Formación Profesional</div>
-            <p>Bases de control analógico y digital, instrumentación y diseño de circuitos.</p>
-          </div>
-        </div>
-      </div>
-      
-    </section>
-
-    <footer>
-      <p>© 2026 Ing. Rolando E. Borrego Navarro. Todos los derechos reservados.</p>
-    </footer>
+  <div class="right-strip">
+    <!-- Redes sociales verticales -->
+    <div class="social-nav">
+      <span>GitHub</span>
+      <span>LinkedIn</span>
+      <span>Correo</span>
+    </div>
   </div>
 
   <script>
-    function filterCategory(category) {
-      // Manejar botones activos
-      const buttons = document.querySelectorAll('.filter-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-
-      // Filtrar tarjetas
-      const cards = document.querySelectorAll('.project-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+    // Un pequeño script de JavaScript para darle algo de interactividad a las flechas
+    function animateClick() {
+      const photo = document.getElementById('mainPhoto');
+      // Un efecto rápido de parpadeo para simular cambio
+      photo.style.opacity = '0.5';
+      setTimeout(() => {
+        photo.style.opacity = '1';
+      }, 200);
     }
   </script>
-</body>
-</html>
 </body>
 </html>
