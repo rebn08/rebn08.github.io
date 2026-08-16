@@ -5,16 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV | Ing. Rolando E. Borrego Navarro</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Iconos de FontAwesome (cargados mediante CDN para los botones y redes) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
-      /* Paleta de Azules Oscuros */
-      --bg-gradient-start: #0f172a; /* Slate 900 */
-      --bg-gradient-end: #1e3a8a;   /* Blue 900 */
-      --accent-color: #2563eb;      /* Royal Blue */
+      var(--bg-gradient-start): #0f172a;
+      var(--bg-gradient-end): #1e3a8a;
+      --accent-color: #2563eb;
       --accent-light: #dbeafe;
       --text-dark: #1e293b;
       --text-gray: #64748b;
@@ -24,7 +21,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
 
     body {
-      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -33,7 +30,7 @@
       color: var(--text-dark);
     }
 
-    /* Contenedor Principal Flex */
+    /* Contenedor Principal */
     .cv-container {
       display: flex;
       max-width: 1100px;
@@ -43,7 +40,7 @@
       gap: 20px;
     }
 
-    /* 1. Menú de Navegación Lateral */
+    /* Menú Lateral */
     .side-nav {
       background: var(--white);
       border-radius: 12px;
@@ -55,22 +52,14 @@
       z-index: 10;
     }
     .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 0;
-      color: var(--text-gray);
-      text-decoration: none;
-      font-size: 0.7rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      cursor: pointer;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 1rem 0; color: var(--text-gray); text-decoration: none;
+      font-size: 0.7rem; font-weight: 600; transition: all 0.3s ease; cursor: pointer;
     }
     .nav-item i { font-size: 1.2rem; margin-bottom: 0.3rem; }
     .nav-item.active, .nav-item:hover { color: var(--accent-color); }
 
-    /* 2. Tarjeta de Perfil Flotante (La de la foto) */
+    /* Tarjeta de Perfil */
     .profile-card {
       background: var(--white);
       border-radius: 12px;
@@ -81,9 +70,9 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      flex-shrink: 0;
     }
 
-    /* Recorte de la foto con diseño en pico (V) */
     .profile-header {
       height: 280px;
       /* PON AQUÍ EL ENLACE A TU FOTO */
@@ -98,88 +87,126 @@
     .profile-info h2 { font-size: 0.95rem; color: var(--accent-color); font-weight: 500; margin-bottom: 1.5rem; }
     
     .social-links { display: flex; justify-content: center; gap: 0.8rem; margin-bottom: 2rem; }
-    .social-links a {
-      color: var(--text-gray);
-      font-size: 1.2rem;
-      transition: color 0.3s;
-    }
+    .social-links a { color: var(--text-gray); font-size: 1.2rem; transition: color 0.3s; }
     .social-links a:hover { color: var(--accent-color); }
 
-    .profile-buttons {
-      display: flex;
-      border-top: 1px solid #e2e8f0;
-    }
+    .profile-buttons { display: flex; border-top: 1px solid #e2e8f0; }
     .profile-buttons a {
-      flex: 1;
-      padding: 1.2rem 0;
-      text-align: center;
-      text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: background 0.3s;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
+      flex: 1; padding: 1.2rem 0; text-align: center; text-decoration: none;
+      color: var(--text-dark); font-weight: 600; font-size: 0.85rem; transition: background 0.3s;
+      display: flex; justify-content: center; align-items: center; gap: 0.5rem;
     }
     .profile-buttons a:hover { background: var(--accent-light); color: var(--accent-color); }
     .profile-buttons a:first-child { border-right: 1px solid #e2e8f0; }
 
-    /* 3. Contenido Principal (El recuadro grande a la derecha) */
+    /* Contenido Principal */
     .main-content {
       background: var(--white);
       border-radius: 12px;
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
       flex-grow: 1;
-      padding: 3rem 3rem 3rem 4rem; /* Padding extra a la izquierda para el empalme */
-      margin-left: -30px; /* Hace que se meta debajo de la tarjeta de perfil */
+      padding: 3rem 3rem 3rem 4rem;
+      margin-left: -30px;
       z-index: 5;
       min-height: 550px;
+      overflow: hidden; /* Evita que el carrusel se salga del cuadro */
     }
 
     .section-title {
-      font-size: 1.4rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-bottom: 0.5rem;
+      font-size: 1.4rem; color: var(--text-dark); margin-bottom: 1.5rem; position: relative; padding-bottom: 0.5rem;
     }
     .section-title::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: 0;
-      height: 3px; width: 40px;
-      background: var(--accent-color);
-      border-radius: 2px;
+      content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 40px;
+      background: var(--accent-color); border-radius: 2px;
     }
 
     /* Layout del "Acerca de mí" */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
     .about-text p { color: var(--text-gray); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
-    
     .personal-info { border-left: 1px solid #e2e8f0; padding-left: 1.5rem; }
     .info-row { display: flex; justify-content: space-between; margin-bottom: 0.8rem; font-size: 0.9rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.4rem;}
     .info-label { background: var(--accent-color); color: white; padding: 0.1rem 0.5rem; border-radius: 4px; font-weight: 500; font-size: 0.8rem;}
     .info-value { color: var(--text-dark); font-weight: 500; }
 
-    /* Servicios */
-    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .service-card { text-align: center; padding: 1.5rem; border: 1px solid #e2e8f0; border-radius: 8px; transition: transform 0.3s, box-shadow 0.3s; }
-    .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--accent-light); }
-    .service-icon { background: var(--accent-color); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 1rem auto; }
+    /* =========================================
+       NUEVO CSS DEL CARRUSEL DE SERVICIOS
+       ========================================= */
+    .carousel-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin: 0 -10px; /* Para dar espacio a los botones */
+    }
+
+    .services-track {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding: 1rem 10px 1.5rem 10px; /* Padding extra para que no se corten las sombras */
+      
+      /* Ocultar barra de scroll nativa */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .services-track::-webkit-scrollbar { display: none; }
+
+    .service-card {
+      background: var(--white);
+      text-align: center;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      flex: 0 0 calc(50% - 0.75rem); /* Muestra 2 tarjetas a la vez en PC */
+      scroll-snap-align: start; /* Aquí se "ancla" al hacer scroll */
+    }
+    .service-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+      border-color: var(--accent-light); 
+    }
+    .service-icon { 
+      background: var(--accent-color); color: white; width: 50px; height: 50px; 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      font-size: 1.5rem; margin: 0 auto 1rem auto; 
+    }
     .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
     .service-card p { font-size: 0.85rem; color: var(--text-gray); }
+
+    /* Botones Flotantes del Carrusel */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--white);
+      color: var(--accent-color);
+      border: 1px solid #e2e8f0;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      z-index: 10;
+      transition: all 0.3s;
+    }
+    .carousel-btn:hover { background: var(--accent-color); color: var(--white); border-color: var(--accent-color); }
+    .btn-prev { left: -20px; }
+    .btn-next { right: -20px; }
 
     /* Diseño Responsivo (Celulares) */
     @media (max-width: 992px) {
       body { padding: 1rem; }
       .cv-container { flex-direction: column; align-items: center; }
       .side-nav { flex-direction: row; width: 100%; justify-content: space-around; padding: 0.5rem 0; margin-bottom: 1rem; }
-      .nav-item { padding: 0.5rem; }
       .main-content { margin-left: 0; margin-top: -30px; padding: 4rem 1.5rem 1.5rem 1.5rem; width: 100%; max-width: 340px; }
-      .about-grid, .services-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
       .personal-info { border-left: none; padding-left: 0; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
+      
+      /* En móviles, mostrar solo 1 tarjeta a la vez */
+      .service-card { flex: 0 0 100%; }
+      .carousel-btn { display: none; } /* En móvil se usa el dedo para deslizar */
     }
   </style>
 </head>
@@ -187,7 +214,7 @@
 
   <div class="cv-container">
     
-    <!-- 1. Menú Lateral -->
+    <!-- Menú Lateral -->
     <nav class="side-nav">
       <a href="#" class="nav-item active"><i class="fa-solid fa-user"></i> ACERCA</a>
       <a href="#" class="nav-item"><i class="fa-solid fa-file-lines"></i> RESUMEN</a>
@@ -195,7 +222,7 @@
       <a href="#" class="nav-item"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
     </nav>
 
-    <!-- 2. Tarjeta de Perfil -->
+    <!-- Tarjeta de Perfil -->
     <div class="profile-card">
       <div class="profile-header"></div>
       
@@ -216,7 +243,7 @@
       </div>
     </div>
 
-    <!-- 3. Contenido Principal -->
+    <!-- Contenido Principal -->
     <div class="main-content">
       
       <!-- Sección Acerca de -->
@@ -228,46 +255,90 @@
         </div>
         
         <div class="personal-info">
-          <div class="info-row">
-            <span class="info-label">Edad:</span>
-            <span class="info-value">29</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Residencia:</span>
-            <span class="info-value">México</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Freelance:</span>
-            <span class="info-value">Disponible</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Dirección:</span>
-            <span class="info-value">Monclova, Coahuila</span>
-          </div>
+          <div class="info-row"><span class="info-label">Edad:</span><span class="info-value">29</span></div>
+          <div class="info-row"><span class="info-label">Residencia:</span><span class="info-value">México</span></div>
+          <div class="info-row"><span class="info-label">Freelance:</span><span class="info-value">Disponible</span></div>
+          <div class="info-row"><span class="info-label">Dirección:</span><span class="info-value">Monclova, Coahuila</span></div>
         </div>
       </div>
 
-      <!-- Sección Servicios -->
+      <!-- Sección Servicios (CARRUSEL) -->
       <h2 class="section-title">Mis Áreas de Especialidad</h2>
-      <div class="services-grid">
-        
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
-          <h3>Automatización</h3>
-          <p>Desarrollo de proyectos con microcontroladores (Arduino, ESP32) e interfaces en Python y Tkinter.</p>
+      
+      <div class="carousel-wrapper">
+        <!-- Botón Izquierdo -->
+        <button class="carousel-btn btn-prev" onclick="scrollCarousel(-1)">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <!-- Pista de Tarjetas -->
+        <div class="services-track" id="servicesTrack">
+          
+          <!-- Tarjeta 1 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h3>Automatización</h3>
+            <p>Desarrollo y control de hardware con Arduino y ESP32. Creación de interfaces en Python (Tkinter/CustomTkinter).</p>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <h3>Ingeniería Médica</h3>
+            <p>Servicio e instalación de equipos de imagenología y alta especialidad a nivel internacional en Meditech.</p>
+          </div>
+
+          <!-- Tarjeta 3 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
+            <h3>Robótica e Innovación</h3>
+            <p>Fundación y dirección de CURI. Coordinación de proyectos tecnológicos colaborativos y concursos estudiantiles.</p>
+          </div>
+
+          <!-- Tarjeta 4 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+            <h3>Docencia Universitaria</h3>
+            <p>Diseño de temarios, prácticas de laboratorio y gestión académica para ingeniería en la FIME UAdeC.</p>
+          </div>
+
+          <!-- Tarjeta 5 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-cube"></i></div>
+            <h3>Diseño & Biónica</h3>
+            <p>Diseño paramétrico y mecánico utilizando herramientas como Fusion 360, con enfoque en visión artificial y biónica.</p>
+          </div>
+
+          <!-- Tarjeta 6 -->
+          <div class="service-card">
+            <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+            <h3>Gestión de TI</h3>
+            <p>Administración de servidores, plataformas de bases de datos y arquitectura tecnológica avanzada.</p>
+          </div>
+
         </div>
 
-        <div class="service-card">
-          <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
-          <h3>Ingeniería Médica</h3>
-          <p>Servicio e instalación de equipos de imagenología y alta especialidad en LATAM y USA.</p>
-        </div>
-
+        <!-- Botón Derecho -->
+        <button class="carousel-btn btn-next" onclick="scrollCarousel(1)">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </div>
 
     </div>
-
   </div>
+
+  <!-- Script para el movimiento del carrusel -->
+  <script>
+    function scrollCarousel(direction) {
+      const track = document.getElementById('servicesTrack');
+      // Calcula el ancho de una tarjeta + el espacio (gap) entre ellas
+      const card = track.querySelector('.service-card');
+      const scrollAmount = card.offsetWidth + 24; // 24px equivale a 1.5rem de gap
+      
+      // Realiza el scroll
+      track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+  </script>
 
 </body>
 </html>
