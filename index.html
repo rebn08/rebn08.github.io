@@ -79,9 +79,10 @@
     }
 
     .profile-header {
-      height: 280px;
+      /* ALTURA MODIFICADA: De 280px a 420px para abarcar casi la mitad del cuadro */
+      height: 420px;
       /* PON AQUÍ EL ENLACE A TU FOTO */
-      background-image: url('https://i.postimg.cc/XN2jQdyN/Diseno-sin-titulo-(1).png'); 
+      background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop'); 
       background-size: cover;
       background-position: center;
       clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
@@ -105,7 +106,7 @@
       justify-content: center; 
       gap: 1.2rem; 
       flex-wrap: wrap;
-      margin-top: auto; /* Empuja los iconos hacia abajo para que quede balanceado */
+      margin-top: auto; 
       margin-bottom: 1rem;
     }
     .social-links a { 
@@ -113,9 +114,8 @@
       transition: transform 0.3s ease; 
       text-decoration: none;
     }
-    .social-links a:hover { transform: scale(1.2); } /* Efecto de crecimiento al pasar el mouse */
+    .social-links a:hover { transform: scale(1.2); } 
 
-    /* Colores oficiales de las marcas */
     .color-linkedin { color: #0077b5; }
     .color-github { color: #24292e; }
     .color-email { color: #ea4335; }
@@ -322,6 +322,9 @@
       track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
   </script>
+
+</body>
+</html>
 
 </body>
 </html>
