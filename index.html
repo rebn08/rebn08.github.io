@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio & Trayectoria Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding: 2rem 1rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    header { text-align: center; margin-bottom: 3rem; }
+    header h1 { font-size: 2.4rem; color: var(--accent); margin-bottom: 0.5rem; }
+    header p { color: var(--text-muted); font-size: 1.1rem; }
+    .badge-container { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .badge { background: var(--card-bg); border: 1px solid var(--border); padding: 0.3rem 0.8rem; border-radius: 9999px; font-size: 0.85rem; }
+
+    section { margin-bottom: 3rem; }
+    h2 { font-size: 1.5rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; transition: transform 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+    .card h3 { font-size: 1.2rem; color: var(--accent); }
+    .card-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+    /* Filtros Interactivos */
+    .filter-buttons { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .filter-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #0f172a; font-weight: 600; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    .project-card { display: block; }
+    .project-card.hidden { display: none; }
+
+    footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Ing. Rolando E. Borrego Navarro</h1>
+      <p>Ingeniero Electrónico | Docente Universitario | Especialista en Tecnología</p>
+      <div class="badge-container">
+        <span class="badge">Sistemas Electrónicos</span>
+        <span class="badge">Automatización & Robótica</span>
+        <span class="badge">Docencia Universitaria</span>
+      </div>
+    </header>
+
+    <!-- Sobre Mí -->
+    <section>
+      <h2>👨‍🏫 Sobre Mí</h2>
+      <div class="card">
+        <p>Espacio dedicado para compartir trayectoria profesional, académica y proyectos activos en docencia, electrónica y desarrollo tecnológico con alumnos y colegas.</p>
+      </div>
+    </section>
+
+    <!-- Filtro de Proyectos y Áreas -->
+    <section>
+      <h2>🚀 Proyectos y Líneas de Trabajo</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
+        <button class="filter-btn" onclick="filterCategory('docencia')">Docencia & Cursos</button>
+        <button class="filter-btn" onclick="filterCategory('electronica')">Electrónica & Hardware</button>
+        <button class="filter-btn" onclick="filterCategory('comunidad')">Comunidad & Talleres</button>
+      </div>
+
+      <div class="projects-grid">
+        <div class="card project-card" data-category="docencia">
+          <h3>Cursos de Ingeniería & Talleres</h3>
+          <div class="card-meta">Facultad de Ingeniería</div>
+          <p>Materiales didácticos, guías de laboratorio y temarios prácticos para estudiantes.</p>
+        </div>
+
+        <div class="card project-card" data-category="electronica">
+          <h3>Proyectos de Automatización</h3>
+          <div class="card-meta">Python / Microcontroladores</div>
+          <p>Desarrollo de interfaces gráficas, sensado y control de motores DC y servomecanismos.</p>
+        </div>
+
+        <div class="card project-card" data-category="comunidad">
+          <h3>Robótica e Innovación</h3>
+          <div class="card-meta">Comunidades de Talento</div>
+          <p>Coordinación de iniciativas estudiantiles, concursos y proyectos tecnológicos colaborativos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trayectoria Académica -->
+    <section>
+      <h2>🎓 Formación & Certificaciones</h2>
+      <div class="card">
+        <h3>Maestría en Gestión de TI / Sistemas Electrónicos</h3>
+        <div class="card-meta">Posgrados & Especialidades</div>
+        <p>Enfoque en arquitectura tecnológica, gestión de sistemas y desarrollo aplicado.</p>
+      </div>
+      <div class="card">
+        <h3>Ingeniería Electrónica Industrial</h3>
+        <div class="card-meta">Formación Profesional</div>
+        <p>Bases de control analógico y digital, instrumentación y diseño de circuitos.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Actualizado para compartir con la comunidad estudiantil. Alojado en GitHub Pages.</p>
+    </footer>
+  </div>
+
+  <script>
+    function filterCategory(category) {
+      // Manejar botones activos
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Filtrar tarjetas
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
