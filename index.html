@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV | M.I.S.E. Rolando E. Borrego Navarro</title>
+  <title>CV | M.I.S.E. Borrego</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -99,18 +99,18 @@
     .profile-info h2 { font-size: 0.95rem; color: var(--accent-color); font-weight: 500; margin-bottom: 1.5rem; }
     
     /* =========================================
-       NUEVO CSS DE REDES SOCIALES (GRID 3x2)
+       CSS DE REDES SOCIALES (GRID 3x2, POSICIÓN SUBIDA)
        ========================================= */
     .social-links { 
       display: grid; 
-      grid-template-columns: repeat(3, auto); /* Crea 3 columnas exactas */
+      grid-template-columns: repeat(3, auto); 
       justify-content: center; 
-      gap: 1.5rem 2rem; /* Espacio vertical de 1.5rem y horizontal de 2rem */
-      margin-top: auto; 
-      margin-bottom: 2rem; /* Un poco más de margen abajo para que respiren */
+      gap: 1.5rem 2rem; 
+      margin-top: 3rem; /* Cambiamos 'auto' por '3rem' para que suba y quede cerca del texto */
+      margin-bottom: 2rem; 
     }
     .social-links a { 
-      font-size: 2.2rem; /* Iconos más grandes */
+      font-size: 2.2rem; 
       transition: transform 0.3s ease; 
       text-decoration: none;
       display: flex;
@@ -324,9 +324,6 @@
       track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
     }
   </script>
-
-</body>
-</html>
 
 </body>
 </html>
