@@ -99,7 +99,7 @@
     .profile-info h1 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 0.2rem; }
     .profile-info h2 { font-size: 0.95rem; color: var(--accent-color); font-weight: 500; margin-bottom: 1.5rem; }
     
-    /* CSS DE REDES SOCIALES (GRID 3x2) */
+    /* CSS DE REDES SOCIALES */
     .social-links { 
       display: grid; 
       grid-template-columns: repeat(3, auto); 
@@ -208,6 +208,73 @@
     .btn-prev { left: -20px; }
     .btn-next { right: -20px; }
 
+    /* =========================================
+       NUEVO CSS: LÍNEA DE TIEMPO (RESUMEN)
+       ========================================= */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    .timeline-column h3 {
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+      border-left: 2px solid #e2e8f0;
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -27px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+    .timeline-date {
+      font-size: 0.8rem;
+      color: var(--text-gray);
+      background: var(--accent-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .timeline-subtitle {
+      font-size: 0.85rem;
+      color: var(--accent-color);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .timeline-text {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      text-align: justify;
+    }
+
     /* Diseño Responsivo (Celulares) */
     @media (max-width: 992px) {
       body { padding: 1rem; }
@@ -218,7 +285,7 @@
       .profile-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; }
       .content-area { padding: 2rem 1.5rem; }
       
-      .about-grid { grid-template-columns: 1fr; }
+      .about-grid, .timeline-container { grid-template-columns: 1fr; gap: 2rem; }
       .personal-info { border-left: none; padding-left: 0; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
       
       .service-card { flex: 0 0 100%; }
@@ -230,7 +297,7 @@
 
   <div class="cv-container">
     
-    <!-- Menú Lateral Interactuando con JavaScript -->
+    <!-- Menú Lateral -->
     <nav class="side-nav">
       <a class="nav-item active" onclick="cambiarSeccion('seccion-acerca', this)"><i class="fa-solid fa-user"></i> ACERCA</a>
       <a class="nav-item" onclick="cambiarSeccion('seccion-resumen', this)"><i class="fa-solid fa-file-lines"></i> RESUMEN</a>
@@ -249,7 +316,6 @@
           <h1>M.I.S.E.</h1>
           <h2>Master en Ingenieria de Sistemas Electronicos</h2>
           
-          <!-- Iconos a color y reordenados en Grid -->
           <div class="social-links">
             <a href="https://www.linkedin.com/in/roembona/" class="color-linkedin" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/rebn08" class="color-github" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>
@@ -264,7 +330,7 @@
       <!-- Columna Derecha (Contenido Dinámico) -->
       <main class="content-area">
         
-        <!-- 1. SECCIÓN: ACERCA (Activa por defecto) -->
+        <!-- 1. SECCIÓN: ACERCA -->
         <section id="seccion-acerca" class="page-section active">
           <h2 class="section-title">Acerca</h2>
           <div class="about-grid">
@@ -273,23 +339,19 @@
               <p>Cuento con amplia experiencia en equipos de imagenología de alta especialidad de la marca SIEMENS, así como en la enseñanza y desarrollo de proyectos de electrónica, automatización, programación y robótica.</p>
             </div>
             
-            <!-- SECCIÓN DE GRADOS ACADÉMICOS -->
             <div class="personal-info">
               <div class="info-row" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;">
                 <span class="info-label" style="background: #1e3a8a;">Licenciatura</span>
                 <span class="info-value" style="font-size: 0.85rem; line-height: 1.3;">Ingeniería Electrónica Industrial</span>
               </div>
-              
               <div class="info-row" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;">
                 <span class="info-label">Maestría</span>
                 <span class="info-value" style="font-size: 0.85rem; line-height: 1.3;">Gestión de Tecnologías de la Información</span>
               </div>
-              
               <div class="info-row" style="flex-direction: column; align-items: flex-start; gap: 0.3rem;">
                 <span class="info-label">Maestría</span>
                 <span class="info-value" style="font-size: 0.85rem; line-height: 1.3;">Ingeniería de Sistemas Electrónicos</span>
               </div>
-              
               <div class="info-row" style="flex-direction: column; align-items: flex-start; gap: 0.3rem; border-bottom: none;">
                 <span class="info-label" style="background: #64748b;">Técnico </span>
                 <span class="info-value" style="font-size: 0.85rem; line-height: 1.3;">Mecatrónica</span>
@@ -300,9 +362,7 @@
           <h2 class="section-title">Mis Áreas de Especialidad</h2>
           
           <div class="carousel-wrapper">
-            <button class="carousel-btn btn-prev" onclick="scrollCarousel(-1)">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
+            <button class="carousel-btn btn-prev" onclick="scrollCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
 
             <div class="services-track" id="servicesTrack">
               <div class="service-card">
@@ -337,20 +397,80 @@
               </div>
             </div>
 
-            <button class="carousel-btn btn-next" onclick="scrollCarousel(1)">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
+            <button class="carousel-btn btn-next" onclick="scrollCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
           </div>
         </section>
 
-        <!-- 2. SECCIÓN: RESUMEN (Línea de tiempo / Estudios) -->
+        <!-- 2. SECCIÓN: RESUMEN (Línea de tiempo) -->
         <section id="seccion-resumen" class="page-section">
           <h2 class="section-title">Resumen Profesional</h2>
-          <p style="color: var(--text-gray); margin-bottom: 2rem;">Experiencia académica y profesional.</p>
-          <div style="padding: 2rem; background: #f8fafc; border-radius: 8px; text-align: center; color: var(--accent-color);">
-            <i class="fa-solid fa-graduation-cap" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-            <h3>Área en Construcción</h3>
-            <p>Aquí colocaremos tus grados académicos y experiencia laboral estructurada.</p>
+          
+          <div class="timeline-container">
+            
+            <!-- Columna Experiencia -->
+            <div class="timeline-column">
+              <h3><i class="fa-solid fa-briefcase"></i> Experiencia Laboral</h3>
+              <div class="timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Presente</div>
+                  <h4 class="timeline-title">Ingeniero de Servicio</h4>
+                  <div class="timeline-subtitle">Meditech</div>
+                  <p class="timeline-text">Mantenimiento preventivo, correctivo e instalación de equipos de imagenología médica de alta especialidad a nivel internacional (LATAM y Estados Unidos).</p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Presente</div>
+                  <h4 class="timeline-title">Catedrático Universitario</h4>
+                  <div class="timeline-subtitle">FIME UAdeC (Monclova)</div>
+                  <p class="timeline-text">Impartición de materias enfocadas en ingeniería y tecnología. Diseño de proyectos académicos, automatización y asesoría en prácticas de laboratorio.</p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Presente</div>
+                  <h4 class="timeline-title">CEO y Fundador</h4>
+                  <div class="timeline-subtitle">CURI (Comunidad Universitaria de Robótica e Innovación)</div>
+                  <p class="timeline-text">Liderazgo de comunidad tecnológica registrada en Talent Network. Coordinación de desarrollo de proyectos robóticos, eventos y vinculación tecnológica estudiantil.</p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Columna Educación -->
+            <div class="timeline-column">
+              <h3><i class="fa-solid fa-graduation-cap"></i> Formación Académica</h3>
+              <div class="timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Posgrado</div>
+                  <h4 class="timeline-title">Máster en Ingeniería de Sistemas Electrónicos</h4>
+                  <div class="timeline-subtitle">TECH Universidad</div>
+                  <p class="timeline-text">Especialización en sistemas electrónicos avanzados, instrumentación y control.</p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Posgrado</div>
+                  <h4 class="timeline-title">Máster en Gestión de Tecnologías de la Información</h4>
+                  <div class="timeline-subtitle">Universidad Tecmilenio</div>
+                  <p class="timeline-text">Administración de plataformas tecnológicas, arquitectura de TI y liderazgo en proyectos de innovación.</p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Licenciatura</div>
+                  <h4 class="timeline-title">Ingeniería Electrónica Industrial</h4>
+                  <div class="timeline-subtitle">Educación Superior</div>
+                  <p class="timeline-text">Bases sólidas en diseño analógico y digital, microcontroladores y automatización industrial.</p>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </section>
 
@@ -383,7 +503,6 @@
 
   <!-- Scripts -->
   <script>
-    // Función para el movimiento del carrusel
     function scrollCarousel(direction) {
       const track = document.getElementById('servicesTrack');
       const card = track.querySelector('.service-card');
@@ -393,7 +512,6 @@
       }
     }
 
-    // Función: Cambiar entre secciones del menú
     function cambiarSeccion(idSeccion, elementoBoton) {
       const botones = document.querySelectorAll('.nav-item');
       botones.forEach(boton => boton.classList.remove('active'));
