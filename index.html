@@ -208,14 +208,12 @@
     .btn-prev { left: -20px; }
     .btn-next { right: -20px; }
 
-    /* =========================================
-       NUEVO CSS: LÍNEA DE TIEMPO (RESUMEN)
-       ========================================= */
+    /* CSS DE LÍNEAS DE TIEMPO (RESUMEN Y TRABAJOS) */
     .timeline-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 3rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
     .timeline-column h3 {
       font-size: 1.2rem;
@@ -275,7 +273,7 @@
       text-align: justify;
     }
 
-    /* Diseño Responsivo (Celulares) */
+    /* Diseño Responsivo */
     @media (max-width: 992px) {
       body { padding: 1rem; }
       .cv-container { flex-direction: column; align-items: center; gap: 10px; }
@@ -300,7 +298,7 @@
     <!-- Menú Lateral -->
     <nav class="side-nav">
       <a class="nav-item active" onclick="cambiarSeccion('seccion-acerca', this)"><i class="fa-solid fa-user"></i> ACERCA</a>
-      <a class="nav-item" onclick="cambiarSeccion('seccion-resumen', this)"><i class="fa-solid fa-file-lines"></i> RESUMEN</a>
+      <a class="nav-item" onclick="cambiarSeccion('seccion-resumen', this)"><i class="fa-solid fa-graduation-cap"></i> RESUMEN</a>
       <a class="nav-item" onclick="cambiarSeccion('seccion-trabajos', this)"><i class="fa-solid fa-briefcase"></i> TRABAJOS</a>
       <a class="nav-item" onclick="cambiarSeccion('seccion-contacto', this)"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
     </nav>
@@ -316,6 +314,7 @@
           <h1>M.I.S.E.</h1>
           <h2>Master en Ingenieria de Sistemas Electronicos</h2>
           
+          <!-- Iconos a color y reordenados en Grid -->
           <div class="social-links">
             <a href="https://www.linkedin.com/in/roembona/" class="color-linkedin" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/rebn08" class="color-github" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>
@@ -401,15 +400,71 @@
           </div>
         </section>
 
-        <!-- 2. SECCIÓN: RESUMEN (Línea de tiempo) -->
+        <!-- 2. SECCIÓN: RESUMEN (Formación Académica) -->
         <section id="seccion-resumen" class="page-section">
-          <h2 class="section-title">Resumen Profesional</h2>
+          <h2 class="section-title">Formación Académica</h2>
+          <p style="color: var(--text-gray); margin-bottom: 1rem;">Historial académico y estudios profesionales.</p>
           
           <div class="timeline-container">
-            
-            <!-- Columna Experiencia -->
+            <!-- Columna 1: Posgrados -->
             <div class="timeline-column">
-              <h3><i class="fa-solid fa-briefcase"></i> Experiencia Laboral</h3>
+              <h3><i class="fa-solid fa-award"></i> Posgrados</h3>
+              <div class="timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Maestría</div>
+                  <h4 class="timeline-title">Ingeniería de Sistemas Electrónicos</h4>
+                  <div class="timeline-subtitle">TECH Universidad</div>
+                  <p class="timeline-text">Especialización en instrumentación, arquitecturas avanzadas y desarrollo aplicado de sistemas electrónicos.</p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Maestría</div>
+                  <h4 class="timeline-title">Gestión de Tecnologías de la Información</h4>
+                  <div class="timeline-subtitle">Universidad Tecmilenio</div>
+                  <p class="timeline-text">Enfoque en la arquitectura tecnológica, administración de plataformas y estrategias de innovación.</p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Columna 2: Licenciatura y Técnico -->
+            <div class="timeline-column">
+              <h3><i class="fa-solid fa-graduation-cap"></i> Educación Superior y Técnica</h3>
+              <div class="timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Licenciatura</div>
+                  <h4 class="timeline-title">Ingeniería Electrónica Industrial</h4>
+                  <div class="timeline-subtitle">Educación Superior</div>
+                  <p class="timeline-text">Bases sólidas de control analógico y digital, instrumentación electrónica y automatización industrial.</p>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Técnico</div>
+                  <h4 class="timeline-title">Mecatrónica</h4>
+                  <div class="timeline-subtitle">Educación Técnica</div>
+                  <p class="timeline-text">Fundamentos teóricos y prácticos en la integración de sistemas mecánicos, electrónicos y de software.</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. SECCIÓN: TRABAJOS (Experiencia Laboral) -->
+        <section id="seccion-trabajos" class="page-section">
+          <h2 class="section-title">Experiencia Laboral</h2>
+          <p style="color: var(--text-gray); margin-bottom: 1rem;">Trayectoria profesional en la industria y la educación.</p>
+          
+          <div class="timeline-container">
+            <!-- Columna 1: Industria y Freelance -->
+            <div class="timeline-column">
+              <h3><i class="fa-solid fa-microchip"></i> Sector Industrial</h3>
               <div class="timeline">
                 
                 <div class="timeline-item">
@@ -417,71 +472,43 @@
                   <div class="timeline-date">Presente</div>
                   <h4 class="timeline-title">Ingeniero de Servicio</h4>
                   <div class="timeline-subtitle">Meditech</div>
-                  <p class="timeline-text">Mantenimiento preventivo, correctivo e instalación de equipos de imagenología médica de alta especialidad a nivel internacional (LATAM y Estados Unidos).</p>
+                  <p class="timeline-text">Mantenimiento preventivo, correctivo e instalación de equipos médicos de alta especialidad (SIEMENS) a nivel internacional.</p>
                 </div>
 
                 <div class="timeline-item">
                   <div class="timeline-dot"></div>
                   <div class="timeline-date">Presente</div>
+                  <h4 class="timeline-title">Ingeniero Freelance</h4>
+                  <div class="timeline-subtitle">Independiente</div>
+                  <p class="timeline-text">Desarrollo integral de proyectos de automatización, sistemas embebidos (Arduino/ESP32), Python y diseño paramétrico.</p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Columna 2: Académico y Liderazgo -->
+            <div class="timeline-column">
+              <h3><i class="fa-solid fa-chalkboard-user"></i> Educación y Liderazgo</h3>
+              <div class="timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Presente</div>
                   <h4 class="timeline-title">Catedrático Universitario</h4>
-                  <div class="timeline-subtitle">FIME UAdeC (Monclova)</div>
-                  <p class="timeline-text">Impartición de materias enfocadas en ingeniería y tecnología. Diseño de proyectos académicos, automatización y asesoría en prácticas de laboratorio.</p>
+                  <div class="timeline-subtitle">FIME U.N. UAdeC</div>
+                  <p class="timeline-text">Impartición de materias de ingeniería, desarrollo de temarios, coordinación de prácticas de laboratorio y gestión académica.</p>
                 </div>
 
                 <div class="timeline-item">
                   <div class="timeline-dot"></div>
                   <div class="timeline-date">Presente</div>
                   <h4 class="timeline-title">CEO y Fundador</h4>
-                  <div class="timeline-subtitle">CURI (Comunidad Universitaria de Robótica e Innovación)</div>
-                  <p class="timeline-text">Liderazgo de comunidad tecnológica registrada en Talent Network. Coordinación de desarrollo de proyectos robóticos, eventos y vinculación tecnológica estudiantil.</p>
+                  <div class="timeline-subtitle">CURI (Comunidad Universitaria de Robótica)</div>
+                  <p class="timeline-text">Liderazgo de comunidad tecnológica. Coordinación de proyectos robóticos, eventos y concursos estudiantiles a nivel universitario.</p>
                 </div>
 
               </div>
             </div>
-
-            <!-- Columna Educación -->
-            <div class="timeline-column">
-              <h3><i class="fa-solid fa-graduation-cap"></i> Formación Académica</h3>
-              <div class="timeline">
-                
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-date">Posgrado</div>
-                  <h4 class="timeline-title">Máster en Ingeniería de Sistemas Electrónicos</h4>
-                  <div class="timeline-subtitle">TECH Universidad</div>
-                  <p class="timeline-text">Especialización en sistemas electrónicos avanzados, instrumentación y control.</p>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-date">Posgrado</div>
-                  <h4 class="timeline-title">Máster en Gestión de Tecnologías de la Información</h4>
-                  <div class="timeline-subtitle">Universidad Tecmilenio</div>
-                  <p class="timeline-text">Administración de plataformas tecnológicas, arquitectura de TI y liderazgo en proyectos de innovación.</p>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-dot"></div>
-                  <div class="timeline-date">Licenciatura</div>
-                  <h4 class="timeline-title">Ingeniería Electrónica Industrial</h4>
-                  <div class="timeline-subtitle">Educación Superior</div>
-                  <p class="timeline-text">Bases sólidas en diseño analógico y digital, microcontroladores y automatización industrial.</p>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </section>
-
-        <!-- 3. SECCIÓN: TRABAJOS (Portafolio) -->
-        <section id="seccion-trabajos" class="page-section">
-          <h2 class="section-title">Portafolio de Proyectos</h2>
-          <p style="color: var(--text-gray); margin-bottom: 2rem;">Galería de desarrollos y proyectos destacados.</p>
-          <div style="padding: 2rem; background: #f8fafc; border-radius: 8px; text-align: center; color: var(--accent-color);">
-            <i class="fa-solid fa-briefcase" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-            <h3>Área en Construcción</h3>
-            <p>Aquí diseñaremos las tarjetas con fotos de tus proyectos de Arduino, Python y Robótica.</p>
           </div>
         </section>
 
@@ -492,7 +519,7 @@
           <div style="padding: 2rem; background: #f8fafc; border-radius: 8px; text-align: center; color: var(--accent-color);">
             <i class="fa-solid fa-paper-plane" style="font-size: 3rem; margin-bottom: 1rem;"></i>
             <h3>Área en Construcción</h3>
-            <p>Aquí pondremos tus vías de contacto directo.</p>
+            <p>Aquí pondremos un formulario de contacto o tus detalles directos para ser contactado.</p>
           </div>
         </section>
 
