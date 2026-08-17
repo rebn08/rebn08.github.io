@@ -208,7 +208,7 @@
     .btn-prev { left: -20px; }
     .btn-next { right: -20px; }
 
-    /* CSS DE LÍNEAS DE TIEMPO (RESUMEN Y TRABAJOS) */
+    /* CSS DE LÍNEAS DE TIEMPO */
     .timeline-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -298,8 +298,8 @@
     <!-- Menú Lateral -->
     <nav class="side-nav">
       <a class="nav-item active" onclick="cambiarSeccion('seccion-acerca', this)"><i class="fa-solid fa-user"></i> ACERCA</a>
-      <a class="nav-item" onclick="cambiarSeccion('seccion-resumen', this)"><i class="fa-solid fa-graduation-cap"></i> RESUMEN</a>
-      <a class="nav-item" onclick="cambiarSeccion('seccion-trabajos', this)"><i class="fa-solid fa-briefcase"></i> TRABAJOS</a>
+      <a class="nav-item" onclick="cambiarSeccion('seccion-formacion', this)"><i class="fa-solid fa-graduation-cap"></i> FORMACIÓN</a>
+      <a class="nav-item" onclick="cambiarSeccion('seccion-experiencia', this)"><i class="fa-solid fa-briefcase"></i> EXPERIENCIA</a>
       <a class="nav-item" onclick="cambiarSeccion('seccion-contacto', this)"><i class="fa-solid fa-envelope"></i> CONTACTO</a>
     </nav>
 
@@ -314,7 +314,6 @@
           <h1>M.I.S.E.</h1>
           <h2>Master en Ingenieria de Sistemas Electronicos</h2>
           
-          <!-- Iconos a color y reordenados en Grid -->
           <div class="social-links">
             <a href="https://www.linkedin.com/in/roembona/" class="color-linkedin" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
             <a href="https://github.com/rebn08" class="color-github" title="GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>
@@ -400,8 +399,8 @@
           </div>
         </section>
 
-        <!-- 2. SECCIÓN: RESUMEN (Formación Académica) -->
-        <section id="seccion-resumen" class="page-section">
+        <!-- 2. SECCIÓN: FORMACIÓN (Antes Resumen) -->
+        <section id="seccion-formacion" class="page-section">
           <h2 class="section-title">Formación Académica</h2>
           <p style="color: var(--text-gray); margin-bottom: 1rem;">Historial académico y estudios profesionales.</p>
           
@@ -456,8 +455,8 @@
           </div>
         </section>
 
-        <!-- 3. SECCIÓN: TRABAJOS (Experiencia Laboral) -->
-        <section id="seccion-trabajos" class="page-section">
+        <!-- 3. SECCIÓN: EXPERIENCIA (Antes Trabajos) -->
+        <section id="seccion-experiencia" class="page-section">
           <h2 class="section-title">Experiencia Laboral</h2>
           <p style="color: var(--text-gray); margin-bottom: 1rem;">Trayectoria profesional en la industria y la educación.</p>
           
@@ -467,6 +466,7 @@
               <h3><i class="fa-solid fa-microchip"></i> Sector Industrial</h3>
               <div class="timeline">
                 
+                <!-- Ítem 1 -->
                 <div class="timeline-item">
                   <div class="timeline-dot"></div>
                   <div class="timeline-date">Presente</div>
@@ -475,12 +475,22 @@
                   <p class="timeline-text">Mantenimiento preventivo, correctivo e instalación de equipos médicos de alta especialidad (SIEMENS) a nivel internacional.</p>
                 </div>
 
+                <!-- Ítem 2 -->
                 <div class="timeline-item">
                   <div class="timeline-dot"></div>
                   <div class="timeline-date">Presente</div>
                   <h4 class="timeline-title">Ingeniero Freelance</h4>
                   <div class="timeline-subtitle">Independiente</div>
                   <p class="timeline-text">Desarrollo integral de proyectos de automatización, sistemas embebidos (Arduino/ESP32), Python y diseño paramétrico.</p>
+                </div>
+
+                <!-- Ítem 3 (Nuevo) -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Año - Año</div>
+                  <h4 class="timeline-title">Título del Puesto</h4>
+                  <div class="timeline-subtitle">Nombre de la Empresa</div>
+                  <p class="timeline-text">Descripción breve de tus responsabilidades, logros o tecnologías utilizadas en este puesto.</p>
                 </div>
 
               </div>
@@ -491,6 +501,7 @@
               <h3><i class="fa-solid fa-chalkboard-user"></i> Educación y Liderazgo</h3>
               <div class="timeline">
                 
+                <!-- Ítem 1 -->
                 <div class="timeline-item">
                   <div class="timeline-dot"></div>
                   <div class="timeline-date">Presente</div>
@@ -499,12 +510,22 @@
                   <p class="timeline-text">Impartición de materias de ingeniería, desarrollo de temarios, coordinación de prácticas de laboratorio y gestión académica.</p>
                 </div>
 
+                <!-- Ítem 2 -->
                 <div class="timeline-item">
                   <div class="timeline-dot"></div>
                   <div class="timeline-date">Presente</div>
                   <h4 class="timeline-title">CEO y Fundador</h4>
                   <div class="timeline-subtitle">CURI (Comunidad Universitaria de Robótica)</div>
                   <p class="timeline-text">Liderazgo de comunidad tecnológica. Coordinación de proyectos robóticos, eventos y concursos estudiantiles a nivel universitario.</p>
+                </div>
+
+                <!-- Ítem 3 (Nuevo) -->
+                <div class="timeline-item">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-date">Año - Año</div>
+                  <h4 class="timeline-title">Título del Puesto</h4>
+                  <div class="timeline-subtitle">Institución / Organización</div>
+                  <p class="timeline-text">Descripción breve de tus responsabilidades, logros o proyectos gestionados en este rol.</p>
                 </div>
 
               </div>
