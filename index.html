@@ -46,7 +46,7 @@
       display: flex;
       flex-direction: column;
       padding: 1.5rem 0;
-      width: 85px; /* Un poco más ancho para los textos nuevos */
+      width: 85px; 
       z-index: 10;
       flex-shrink: 0;
     }
@@ -94,7 +94,7 @@
     .profile-info h1 { font-size: 1.6rem; color: var(--text-dark); margin-bottom: 0.2rem; }
     .profile-info h2 { font-size: 0.95rem; color: var(--accent-color); font-weight: 500; margin-bottom: 1.5rem; }
     
-    /* CSS DE REDES SOCIALES (GRID 3x2) */
+    /* CSS DE REDES SOCIALES */
     .social-links { 
       display: grid; grid-template-columns: repeat(3, auto); justify-content: center; 
       gap: 1.5rem 2rem; margin-top: 3rem; margin-bottom: 2rem; 
@@ -113,7 +113,6 @@
 
     /* TRANSICIONES DE SECCIONES INTERACTIVAS */
     .page-section { display: none; animation: fadeIn 0.5s ease forwards; height: 100%; overflow-y: auto; padding-right: 10px; }
-    /* Estilizar scroll de las secciones */
     .page-section::-webkit-scrollbar { width: 6px; }
     .page-section::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
     .page-section.active { display: block; }
@@ -175,16 +174,14 @@
     .timeline-subtitle { font-size: 0.85rem; color: var(--accent-color); margin-bottom: 0.5rem; font-weight: 500; }
     .timeline-text { font-size: 0.85rem; color: var(--text-gray); line-height: 1.6; text-align: justify; }
 
-    /* =========================================
-       NUEVO CSS: CURSOS Y CERTIFICACIONES
-       ========================================= */
+    /* CSS CURSOS Y CERTIFICACIONES */
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
     .cert-card {
       background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;
       display: flex; align-items: center; gap: 1rem; transition: transform 0.3s;
     }
     .cert-card:hover { transform: translateY(-3px); border-color: var(--accent-light); }
-    .cert-icon { font-size: 2rem; color: #f59e0b; } /* Color dorado para certificaciones */
+    .cert-icon { font-size: 2rem; color: #f59e0b; } 
     .cert-info h4 { font-size: 0.95rem; color: var(--text-dark); line-height: 1.2; margin-bottom: 0.2rem;}
     .cert-info p { font-size: 0.75rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px;}
 
@@ -200,9 +197,7 @@
     .course-details h4 { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.1rem; }
     .course-details p { font-size: 0.75rem; color: var(--text-gray); }
 
-    /* =========================================
-       NUEVO CSS: ÉXITOS PROFESIONALES
-       ========================================= */
+    /* CSS ÉXITOS PROFESIONALES */
     .achievements-grid { display: flex; flex-direction: column; gap: 1.5rem; }
     .achievement-card {
       background: var(--white); border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem 1.5rem 1.5rem 2.5rem;
@@ -217,7 +212,44 @@
     .achievement-date { font-size: 0.8rem; background: var(--accent-light); color: var(--accent-color); padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 500;}
     .achievement-text { font-size: 0.9rem; color: var(--text-gray); line-height: 1.6; text-align: justify;}
 
-    /* Diseño Responsivo (Celulares) */
+    /* CSS SECCIÓN CONTACTO */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 3rem;
+      margin-top: 1rem;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-card {
+      display: flex; align-items: center; gap: 1rem; padding: 1.5rem;
+      background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;
+      transition: transform 0.3s;
+    }
+    .contact-card:hover { transform: translateX(5px); border-color: var(--accent-light); }
+    .contact-icon {
+      width: 50px; height: 50px; background: var(--accent-light); color: var(--accent-color);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .contact-details h4 { font-size: 1rem; color: var(--text-dark); margin-bottom: 0.2rem; }
+    .contact-details p { font-size: 0.85rem; color: var(--text-gray); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label { font-size: 0.85rem; font-weight: 500; color: var(--text-dark); }
+    .form-control {
+      padding: 0.8rem 1rem; border: 1px solid #e2e8f0; border-radius: 6px;
+      font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.3s;
+    }
+    .form-control:focus { border-color: var(--accent-color); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      background: var(--accent-color); color: white; border: none; padding: 1rem;
+      border-radius: 6px; font-weight: 600; cursor: pointer; transition: background 0.3s;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-size: 0.95rem;
+    }
+    .btn-submit:hover { background: #1d4ed8; }
+
+    /* Diseño Responsivo */
     @media (max-width: 992px) {
       body { padding: 1rem; }
       .cv-container { flex-direction: column; align-items: center; gap: 10px; }
@@ -228,7 +260,7 @@
       .profile-sidebar { width: 100%; border-right: none; border-bottom: 1px solid #e2e8f0; }
       .content-area { padding: 2rem 1.5rem; }
       
-      .about-grid, .timeline-container, .courses-container, .certs-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .about-grid, .timeline-container, .courses-container, .certs-grid, .contact-container { grid-template-columns: 1fr; gap: 1rem; }
       .personal-info { border-left: none; padding-left: 0; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; }
       
       .service-card { flex: 0 0 100%; }
@@ -459,12 +491,11 @@
           </div>
         </section>
 
-        <!-- 4. SECCIÓN: CURSOS Y CERTIFICACIONES (NUEVA) -->
+        <!-- 4. SECCIÓN: CURSOS Y CERTIFICACIONES -->
         <section id="seccion-cursos" class="page-section">
           <h2 class="section-title">Certificaciones Internacionales</h2>
           <p style="color: var(--text-gray); margin-bottom: 2rem;">Acreditaciones y certificaciones de validez global.</p>
           
-          <!-- Tarjetas Destacadas de Certificaciones -->
           <div class="certs-grid">
             <div class="cert-card">
               <i class="fa-solid fa-award cert-icon"></i>
@@ -499,9 +530,7 @@
           <h2 class="section-title">Cursos y Capacitaciones</h2>
           <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Historial de actualización continua.</p>
           
-          <!-- Lista de cursos en 2 columnas (Añade los tuyos copiando el bloque div.course-item) -->
           <div class="courses-container">
-            
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -509,15 +538,13 @@
                 <p>EKORA Emprendedores</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4>Desarrollo de talento creativo para jóvenes universitarios con enfoque de genero</h4>
+                <h4>Desarrollo de talento creativo con enfoque de género</h4>
                 <p>CONACYT</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -525,7 +552,6 @@
                 <p>FIME Monclova</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -533,15 +559,13 @@
                 <p>Udemy</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Robótica creativa con Arduino y Scratch</h4>
+                <h4>Robótica creativa con Arduino y Scratch</h4>
                 <p>Udemy</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -549,7 +573,6 @@
                 <p>Udemy</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -557,7 +580,6 @@
                 <p>Udemy</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -565,7 +587,6 @@
                 <p>Udemy</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -573,7 +594,6 @@
                 <p>Tec de Monterrey</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -581,7 +601,6 @@
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
@@ -589,137 +608,150 @@
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Prótesis estéticas 3D</h4>
+                <h4>Prótesis estéticas 3D</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Sensores miolectricos</h4>
+                <h4>Sensores mioeléctricos</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Diseño biorgánico y manufactura biomédica</h4>
+                <h4>Diseño biorgánico y manufactura biomédica</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Diseño por tomografía</h4>
+                <h4>Diseño por tomografía</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Exo - Esqueletos</h4>
+                <h4>Exo - Esqueletos</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Prótesis biomecánicas</h4>
+                <h4>Prótesis biomecánicas</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Prótesis biónicas 3D</h4>
+                <h4>Prótesis biónicas 3D</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Introducción: Redes neuronales e IA</h4>
+                <h4>Introducción: Redes neuronales e IA</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Señales biológicas y diseño inteligente</h4>
+                <h4>Señales biológicas y diseño inteligente</h4>
                 <p>P4H Bionics</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Diplomado: Diseño Mecánico</h4>
+                <h4>Diplomado: Diseño Mecánico</h4>
                 <p>FIME Monclova</p>
               </div>
             </div>
-
             <div class="course-item">
               <i class="fa-solid fa-book-open"></i>
               <div class="course-details">
-                <h4> Diplomado: Programación de PLCs</h4>
+                <h4>Diplomado: Programación de PLCs</h4>
                 <p>FIME Monclova</p>
               </div>
             </div>
-            
-            <!-- Puedes seguir pegando más div.course-item aquí. El contenedor crecerá automáticamente y generará scroll si es necesario. -->
-            
           </div>
         </section>
 
-        <!-- 5. SECCIÓN: ÉXITOS PROFESIONALES (NUEVA) -->
+        <!-- 5. SECCIÓN: ÉXITOS PROFESIONALES -->
         <section id="seccion-exitos" class="page-section">
           <h2 class="section-title">Éxitos Profesionales</h2>
           <p style="color: var(--text-gray); margin-bottom: 2rem;">Logros, comunidades fundadas y ponencias destacadas.</p>
           
           <div class="achievements-grid">
             
-            <!-- Éxito 1: CURI -->
             <div class="achievement-card">
               <div class="achievement-header">
-                <h3 class="achievement-title">Fundador y CEO de CURI</h3>
-                <span class="achievement-date">Comunidad Registrada</span>
+                <h3 class="achievement-title">Conferencista Internacional en IA y Automatización</h3>
+                <span class="achievement-date">San Diego, CA</span>
               </div>
               <p class="achievement-text">
-                Fundador de la <strong>Comunidad Universitaria de Robótica e Innovación (CURI)</strong>, una organización oficial registrada dentro de Talent Network. A través de este espacio, coordino el desarrollo tecnológico estudiantil, la creación de proyectos colaborativos y la participación en concursos de robótica e innovación tecnológica, fomentando el liderazgo y la ingeniería aplicada en la comunidad universitaria.
+                Participación como ponente magistral en el <strong>“Tech & Innovation Summit”</strong> en San Diego, California, con el tema <em>“La IA: La nueva era de la automatización en la industria”</em>. Exposición enfocada en la integración tecnológica y el impacto de los algoritmos inteligentes en la optimización de procesos industriales modernos.
               </p>
             </div>
 
-            <!-- Éxito 2: Ponencias / Conferencias -->
             <div class="achievement-card">
               <div class="achievement-header">
-                <h3 class="achievement-title">Ponencias Internacionales y Nacionales</h3>
-                <span class="achievement-date">Conferencista</span>
+                <h3 class="achievement-title">Alianzas Estratégicas y Convenios en el Sector Salud</h3>
+                <span class="achievement-date">Ingeniería Biomédica</span>
               </div>
               <p class="achievement-text">
-                Participación activa como ponente en diversos escenarios en el extranjero y a nivel nacional. Impartiendo conferencias magistrales sobre tendencias en automatización, robótica educativa y el papel del ingeniero en la industria médica y tecnológica actual. (<em>Aquí puedes detallar el nombre de las ponencias más importantes o los países visitados</em>).
+                Gestión y consolidación de convenios clave con la iniciativa privada del sector salud. Estas alianzas han permitido asegurar espacios de prácticas profesionales, fortalecer la bolsa de trabajo para egresados y gestionar la donación de equipos médicos especializados para mejorar la infraestructura académica y de laboratorio.
               </p>
             </div>
 
-            <!-- Éxito 3: Proyectos de Impacto / Logro Extra -->
             <div class="achievement-card">
               <div class="achievement-header">
-                <h3 class="achievement-title">Título de Otro Gran Logro o Proyecto</h3>
-                <span class="achievement-date">Año o Periodo</span>
+                <h3 class="achievement-title">Asesoría de Equipo Ganador en Diseño Mecánico</h3>
+                <span class="achievement-date">TEKSID Hierro de México</span>
               </div>
               <p class="achievement-text">
-                Breve descripción de otro éxito profesional. Por ejemplo, alguna instalación crítica de SIEMENS en el extranjero, algún premio ganado en concursos de innovación, o el impacto directo de tus proyectos de docencia en la FIME.
+                Líder y asesor del equipo universitario ganador del concurso <em>"Diseño de Ingeniería de Máquina Briqueteadora"</em>. Esta experiencia demostró la capacidad de guiar talento joven hacia la resolución de problemas industriales reales y la aplicación práctica de conceptos avanzados de diseño mecánico y automatización de la mano del sector empresarial.
+              </p>
+            </div>
+
+            <div class="achievement-card">
+              <div class="achievement-header">
+                <h3 class="achievement-title">1er Lugar Estatal de Innovación Educativa</h3>
+                <span class="achievement-date">COECYT Coahuila</span>
+              </div>
+              <p class="achievement-text">
+                Galardonado con el primer lugar a nivel estatal en el certamen <em>"Vive ConCiencia"</em>, organizado por el Consejo Estatal de Ciencia y Tecnología (COECYT). Reconocimiento otorgado por el desarrollo e implementación de proyectos de base tecnológica enfocados en revolucionar e innovar el sector educativo.
+              </p>
+            </div>
+
+            <div class="achievement-card">
+              <div class="achievement-header">
+                <h3 class="achievement-title">Reconocimiento Nacional de Comunidad Estudiantil</h3>
+                <span class="achievement-date">Talent Network</span>
+              </div>
+              <p class="achievement-text">
+                Logré la integración y el reconocimiento oficial a nivel nacional de una comunidad estudiantil de ingeniería dentro de la prestigiosa red <strong>Talent Network</strong>. Este hito consolidó un ecosistema de innovación, impulsando la visibilidad del talento universitario en plataformas de alto impacto tecnológico e industrial.
+              </p>
+            </div>
+
+            <div class="achievement-card">
+              <div class="achievement-header">
+                <h3 class="achievement-title">Asesoría Nacional en Robótica Competitiva</h3>
+                <span class="achievement-date">WER México</span>
+              </div>
+              <p class="achievement-text">
+                Dirección y asesoría principal de un equipo de robótica educativa en el torneo nacional <strong>World Educational Robot Contest (WER) México</strong>. Fomentando el pensamiento crítico, la programación estructurada y el diseño mecatrónico en los estudiantes, compitiendo al más alto nivel con los mejores exponentes del país.
               </p>
             </div>
 
@@ -729,11 +761,48 @@
         <!-- 6. SECCIÓN: CONTACTO -->
         <section id="seccion-contacto" class="page-section">
           <h2 class="section-title">Contacto</h2>
-          <p style="color: var(--text-gray); margin-bottom: 2rem;">¿Tienes un proyecto en mente? Hablemos.</p>
-          <div style="padding: 2rem; background: #f8fafc; border-radius: 8px; text-align: center; color: var(--accent-color);">
-            <i class="fa-solid fa-paper-plane" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-            <h3>Área en Construcción</h3>
-            <p>Aquí pondremos un formulario de contacto o tus detalles directos.</p>
+          <p style="color: var(--text-gray); margin-bottom: 2rem;">¿Tienes un proyecto en mente o una propuesta profesional? Hablemos.</p>
+          
+          <div class="contact-container">
+            <div class="contact-info">
+              <div class="contact-card">
+                <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="contact-details">
+                  <h4>Ubicación</h4>
+                  <p>Monclova, Coahuila, México</p>
+                </div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="contact-details">
+                  <h4>Email</h4>
+                  <p>rborrego@uadec.edu.mx</p>
+                </div>
+              </div>
+              <div class="contact-card">
+                <div class="contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="contact-details">
+                  <h4>WhatsApp</h4>
+                  <p>+52 866 257 8249</p>
+                </div>
+              </div>
+            </div>
+
+            <form class="contact-form" action="mailto:rborrego@uadec.edu.mx" method="post" enctype="text/plain">
+              <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" class="form-control" name="Nombre" placeholder="Ej. Juan Pérez" required>
+              </div>
+              <div class="form-group">
+                <label>Correo Electrónico</label>
+                <input type="email" class="form-control" name="Correo" placeholder="tu@correo.com" required>
+              </div>
+              <div class="form-group">
+                <label>Mensaje</label>
+                <textarea class="form-control" name="Mensaje" placeholder="Escribe tu mensaje o propuesta aquí..." required></textarea>
+              </div>
+              <button type="submit" class="btn-submit">Enviar Mensaje <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
           </div>
         </section>
 
