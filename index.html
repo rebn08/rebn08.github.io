@@ -111,7 +111,7 @@
       flex-grow: 1; padding: 3rem 4rem; display: flex; flex-direction: column; overflow: hidden; position: relative;
     }
 
-    /* TRANSICIONES DE SECCIONES INTERACTIVAS MEJORADAS */
+    /* TRANSICIONES DE SECCIONES INTERACTIVAS */
     .page-section { display: none; animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; height: 100%; overflow-y: auto; padding-right: 10px; }
     .page-section::-webkit-scrollbar { width: 6px; }
     .page-section::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
@@ -140,7 +140,7 @@
     /* CARRUSEL DE SERVICIOS */
     .carousel-wrapper { position: relative; display: flex; align-items: center; margin: 0 -10px; }
     .services-track {
-      display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 1rem 15px 1.5rem 15px; -ms-overflow-style: none; scrollbar-width: none;
+      display: flex; gap: 1.5rem; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; padding: 1rem 10px 1.5rem 10px; -ms-overflow-style: none; scrollbar-width: none;
     }
     .services-track::-webkit-scrollbar { display: none; }
     .service-card {
@@ -153,13 +153,14 @@
     .service-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-dark); }
     .service-card p { font-size: 0.85rem; color: var(--text-gray); }
     
-    /* BOTONES DEL CARRUSEL (AJUSTADOS PARA NO CORTARSE EN PC) */
     .carousel-btn {
       position: absolute; top: 50%; transform: translateY(-50%); background: var(--white); color: var(--accent-color); border: 1px solid #e2e8f0; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; transition: all 0.3s;
     }
     .carousel-btn:hover { background: var(--accent-color); color: var(--white); border-color: var(--accent-color); }
-    .btn-prev { left: -5px; } 
-    .btn-next { right: -5px; }
+    .btn-prev { left: -5px; } .btn-next { right: -5px; }
+
+    /* LÍNEA DE PROGRESO DEL CARRUSEL (Por defecto oculta en PC) */
+    .carousel-indicators { display: none; }
 
     /* CSS DE LÍNEAS DE TIEMPO */
     .timeline-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 1rem; }
@@ -180,21 +181,16 @@
     /* CSS CURSOS Y CERTIFICACIONES */
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
     .cert-card {
-      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem;
-      display: flex; align-items: center; gap: 1rem; transition: transform 0.3s;
+      background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; display: flex; align-items: center; gap: 1rem; transition: transform 0.3s;
     }
     .cert-card:hover { transform: translateY(-3px); border-color: var(--accent-light); }
     .cert-icon { font-size: 2rem; color: #f59e0b; } 
     .cert-info h4 { font-size: 0.95rem; color: var(--text-dark); line-height: 1.2; margin-bottom: 0.2rem;}
     .cert-info p { font-size: 0.75rem; color: var(--text-gray); text-transform: uppercase; letter-spacing: 0.5px;}
 
-    .courses-container {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-      background: var(--white); padding: 0.5rem 0;
-    }
+    .courses-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--white); padding: 0.5rem 0; }
     .course-item {
-      display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1rem;
-      background: #f8fafc; border-radius: 6px; border-left: 4px solid var(--accent-color);
+      display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 1rem; background: #f8fafc; border-radius: 6px; border-left: 4px solid var(--accent-color);
     }
     .course-item i { color: var(--accent-color); font-size: 1.2rem; }
     .course-details h4 { font-size: 0.9rem; color: var(--text-dark); margin-bottom: 0.1rem; }
@@ -203,19 +199,18 @@
     /* CSS ÉXITOS PROFESIONALES */
     .achievements-grid { display: flex; flex-direction: column; gap: 1.5rem; }
     .achievement-card {
-      background: var(--white); border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem 1.5rem 1.5rem 2.5rem;
-      position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
+      background: var(--white); border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem 1.5rem 1.5rem 2.5rem; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;
     }
     .achievement-card:hover { transform: translateX(5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    .achievement-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--accent-color);
-    }
+    .achievement-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--accent-color); }
     .achievement-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; }
     .achievement-title { font-size: 1.1rem; color: var(--text-dark); font-weight: 600; }
     .achievement-date { font-size: 0.8rem; background: var(--accent-light); color: var(--accent-color); padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 500;}
     .achievement-text { font-size: 0.9rem; color: var(--text-gray); line-height: 1.6; text-align: justify;}
 
-    /* Diseño Responsivo (Celulares) */
+    /* =========================================
+       DISEÑO RESPONSIVO Y BARRA DE MÓVIL
+       ========================================= */
     @media (max-width: 992px) {
       body { padding: 1rem; }
       .cv-container { flex-direction: column; align-items: center; gap: 10px; }
@@ -232,23 +227,42 @@
       .service-card { flex: 0 0 100%; }
       .achievement-header { flex-direction: column; gap: 0.5rem; }
 
-      /* ==============================================
-         NUEVOS BOTONES DE CARRUSEL PARA CELULAR 
-         ============================================== */
+      /* Ajuste del Carrusel, Botones y Barra para Celular */
       .carousel-wrapper {
-        padding-bottom: 3.5rem; /* Da espacio abajo para los botones */
+        padding-bottom: 4rem; /* Da espacio abajo para los botones y la barra */
       }
       .carousel-btn { 
-        display: flex; /* Muestra los botones en móvil */
+        display: flex; 
         top: auto; 
         bottom: 0; 
         transform: none;
         width: 45px;
         height: 45px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Más sombra para que parezcan flotantes */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
       }
-      .btn-prev { left: calc(50% - 55px); } /* Los centra perfectamente */
-      .btn-next { right: calc(50% - 55px); }
+      .btn-prev { left: calc(50% - 110px); } /* Acomodado a la izquierda */
+      .btn-next { right: calc(50% - 110px); } /* Acomodado a la derecha */
+      
+      /* Aparece la Barra Segmentada en medio */
+      .carousel-indicators {
+        display: flex;
+        position: absolute;
+        bottom: 19.5px; /* Altura perfecta para quedar centrada entre los botones */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        gap: 6px;
+      }
+      .indicator {
+        flex: 1;
+        height: 6px;
+        background: #cbd5e1;
+        border-radius: 4px;
+        transition: background 0.3s ease;
+      }
+      .indicator.active {
+        background: var(--accent-color); /* Se pinta de azul al estar activa */
+      }
     }
   </style>
 </head>
@@ -321,38 +335,54 @@
           <div class="carousel-wrapper">
             <button class="carousel-btn btn-prev" onclick="scrollCarousel(-1)"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="services-track" id="servicesTrack">
+              <!-- Tarjeta 1 -->
               <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
                 <h3>Automatización</h3>
-                <p>Desarrollo y control de sistemas embebidos con microcontroladores y desarrollo de HMIs.</p>
+                <p>Desarrollo y control de sistemas embebidos con microcontroladores y HMIs.</p>
               </div>
+              <!-- Tarjeta 2 -->
               <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div>
                 <h3>Ingeniería Médica</h3>
-                <p>Servicio y mantenimiento a equipos de imagenología de alta especialidad de la marca SIEMENS.</p>
+                <p>Servicio a equipos de imagenología de alta especialidad marca SIEMENS.</p>
               </div>
+              <!-- Tarjeta 3 -->
               <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
                 <h3>Robótica</h3>
-                <p>Diseño, desarrollo e implementación de robótica a nivel industrial y educativa.</p>
+                <p>Diseño, desarrollo e implementación de robótica industrial y educativa.</p>
               </div>
+              <!-- Tarjeta 4 -->
               <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
                 <h3>Docencia Universitaria</h3>
-                <p>Diseño de temarios, prácticas de laboratorio, gestión académica y eventos para ingeniería.</p>
+                <p>Diseño de temarios, prácticas, gestión académica y eventos para ingeniería.</p>
               </div>
+              <!-- Tarjeta 5 -->
               <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-cube"></i></div>
                 <h3>Diseño & Biónica</h3>
-                <p>Diseño paramétrico y mecánico utilizando herramientas como Fusion 360, SolidWorks, Mesh Mixer, 3D Slicer.</p>
+                <p>Diseño paramétrico y mecánico con Fusion 360, SolidWorks, Mesh Mixer, 3D Slicer.</p>
               </div>
+              <!-- Tarjeta 6 -->
               <div class="service-card">
                 <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
                 <h3>Gestión de TI</h3>
-                <p>Administración de servidores, bases de datos y arquitectura tecnológica avanzada.</p>
+                <p>Administración de servidores, bases de datos y arquitectura tecnológica.</p>
               </div>
             </div>
             <button class="carousel-btn btn-next" onclick="scrollCarousel(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            
+            <!-- Barra Indicadora Partida en 6 para Celulares -->
+            <div class="carousel-indicators">
+              <span class="indicator active"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+              <span class="indicator"></span>
+            </div>
           </div>
         </section>
 
@@ -513,160 +543,28 @@
           <p style="color: var(--text-gray); margin-bottom: 1.5rem;">Historial de actualización continua.</p>
           
           <div class="courses-container">
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Aterriza tu idea</h4>
-                <p>EKORA Emprendedores</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Desarrollo de talento creativo con enfoque de género</h4>
-                <p>CONACYT</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Configuración de sistemas de video vigilancia</h4>
-                <p>FIME Monclova</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Maquetacion con AdobeXD</h4>
-                <p>Udemy</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Robótica creativa con Arduino y Scratch</h4>
-                <p>Udemy</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Introducción a HTML5 y CSS3</h4>
-                <p>Udemy</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Curso básico a avanzado de C++</h4>
-                <p>Udemy</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Curso básico a avanzado en Python</h4>
-                <p>Udemy</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Rocketry</h4>
-                <p>Tec de Monterrey</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Impresión 3D con resina</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Prótesis 3D para mascotas</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Prótesis estéticas 3D</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Sensores mioeléctricos</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Diseño biorgánico y manufactura biomédica</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Diseño por tomografía</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Exo - Esqueletos</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Prótesis biomecánicas</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Prótesis biónicas 3D</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Introducción: Redes neuronales e IA</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Señales biológicas y diseño inteligente</h4>
-                <p>P4H Bionics</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Diplomado: Diseño Mecánico</h4>
-                <p>FIME Monclova</p>
-              </div>
-            </div>
-            <div class="course-item">
-              <i class="fa-solid fa-book-open"></i>
-              <div class="course-details">
-                <h4>Diplomado: Programación de PLCs</h4>
-                <p>FIME Monclova</p>
-              </div>
-            </div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Aterriza tu idea</h4><p>EKORA Emprendedores</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Desarrollo de talento creativo con enfoque de género</h4><p>CONACYT</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Configuración de sistemas de video vigilancia</h4><p>FIME Monclova</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Maquetacion con AdobeXD</h4><p>Udemy</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Robótica creativa con Arduino y Scratch</h4><p>Udemy</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Introducción a HTML5 y CSS3</h4><p>Udemy</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Curso básico a avanzado de C++</h4><p>Udemy</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Curso básico a avanzado en Python</h4><p>Udemy</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Rocketry</h4><p>Tec de Monterrey</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Impresión 3D con resina</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Prótesis 3D para mascotas</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Prótesis estéticas 3D</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Sensores mioeléctricos</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Diseño biorgánico y manufactura biomédica</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Diseño por tomografía</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Exo - Esqueletos</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Prótesis biomecánicas</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Prótesis biónicas 3D</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Introducción: Redes neuronales e IA</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Señales biológicas y diseño inteligente</h4><p>P4H Bionics</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Diplomado: Diseño Mecánico</h4><p>FIME Monclova</p></div></div>
+            <div class="course-item"><i class="fa-solid fa-book-open"></i><div class="course-details"><h4>Diplomado: Programación de PLCs</h4><p>FIME Monclova</p></div></div>
           </div>
         </section>
 
@@ -740,6 +638,7 @@
 
   <!-- Scripts -->
   <script>
+    // Configuración del Carrusel
     function scrollCarousel(direction) {
       const track = document.getElementById('servicesTrack');
       const card = track.querySelector('.service-card');
@@ -749,25 +648,55 @@
       }
     }
 
+    // Configuración de la Barra Segmentada para Celulares
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('servicesTrack');
+      const indicators = document.querySelectorAll('.indicator');
+      
+      if(track && indicators.length > 0) {
+        track.addEventListener('scroll', () => {
+          const card = track.querySelector('.service-card');
+          if(!card) return;
+          
+          // Calculamos en qué tarjeta estamos basándonos en el scroll total
+          const cardWidth = card.offsetWidth + 24; // ancho + gap
+          let index = Math.round(track.scrollLeft / cardWidth);
+          
+          // Aseguramos que el índice esté dentro del rango
+          if(index < 0) index = 0;
+          if(index >= indicators.length) index = indicators.length - 1;
+
+          // Pintamos el segmento correspondiente
+          indicators.forEach((ind, i) => {
+            if(i === index) {
+              ind.classList.add('active');
+            } else {
+              ind.classList.remove('active');
+            }
+          });
+        });
+      }
+    });
+
+    // Configuración del Menú de Navegación Interactivo
     function cambiarSeccion(idSeccion, elementoBoton) {
-      // Remover clase 'active' de todos los botones
+      // 1. Apagamos todos los botones
       const botones = document.querySelectorAll('.nav-item');
       botones.forEach(boton => boton.classList.remove('active'));
 
-      // Activar el botón clicado
+      // 2. Encendemos el botón presionado
       elementoBoton.classList.add('active');
 
-      // Ocultar todas las secciones
+      // 3. Ocultamos todas las secciones de contenido
       const secciones = document.querySelectorAll('.page-section');
       secciones.forEach(seccion => seccion.classList.remove('active'));
 
-      // Mostrar la sección seleccionada
+      // 4. Mostramos la nueva sección con animación de rebote
       const seccionActiva = document.getElementById(idSeccion);
       seccionActiva.classList.add('active');
 
-      // Animación extra visual de salto hacia la sección (Solo para Celulares)
+      // 5. ANIMACIÓN Y AUTO-SCROLL PARA CELULARES
       if (window.innerWidth <= 992) {
-        // Ejecuta el auto-scroll milisegundos después de que la pestaña cargó
         setTimeout(() => {
           document.querySelector('.content-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 80);
